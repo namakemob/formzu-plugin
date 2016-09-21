@@ -1,0 +1,253 @@
+(function($){
+    undefined;
+    $(function(){
+
+        function submitFormData(form_elem_id, data){
+            var html        = data.html;
+            var mobile_html = data.mobile_html;
+            var form_id     = data.form_id;
+
+            $('<iframe></iframe>').css('width', '100%').load(function(){
+
+                var ibody = this.contentWindow.document.body;
+
+                $(ibody).append(html);
+
+                var google_translate_elem = $(ibody).find('#google_translate_element').css('height', '24px');
+                var geo_trust_img         = $('<img />').css('height', '55px');
+                var geo_trust_elem        = $(ibody).children().last().children().last();
+
+                if (geo_trust_elem.prop('tagName') === 'DIV') {
+                    geo_trust_elem.append($('<a></a>').append(geo_trust_img));
+                }
+
+                var form            = document.forms[form_elem_id];
+                var textarea_length = $(ibody).find('textarea').length;
+                var height          = $(ibody).parent().outerHeight() + 40 + (40 * textarea_length);
+                var title           = $(ibody).find('title').text();
+                var items           = $(ibody).find('.itemTitle').map(function(index, elem){
+                    return $(elem).text();
+                }).get().join();
+
+                form.elements['hidden_height'].value = height;
+                form.elements['hidden_id'].value     = form_id;
+                form.elements['hidden_title'].value  = title;
+                form.elements['hidden_items'].value  = items;
+
+                $(this).remove();
+
+                $('<iframe></iframe>').css('width', '100%').load(function(){
+
+                    var mobile_ibody = this.contentWindow.document.body;
+                    $(mobile_ibody).append(mobile_html);
+
+                    var google_translate_elem = $(ibody).find('#google_translate_element').css('width', '100%').css('height', '24px');
+                    var geo_trust_img         = $('<img />').css('height', '55px');
+                    var geo_trust_elem        = $(ibody).children().last().children().last();
+
+                    if (geo_trust_elem.prop('tagName') === 'DIV') {
+                        geo_trust_elem.append($('<a></a>').append(geo_trust_img));
+                    }
+
+                    var mobile_height = $(mobile_ibody).parent().outerHeight() + 40 + 44;//body:padding-top
+                    mobile_height++;
+
+                    form.elements['hidden_mobile_height'].value = mobile_height;
+
+                    $(this).remove();
+                    $('#' + form_elem_id).submit();
+                    return true;
+                }).appendTo('body');
+            }).appendTo('body');
+        }
+
+
+        function getFormIdFromString(form_id){
+            if (!form_id) {
+                return false;
+            }
+            if (form_id.match(/[Ｓｓ０-９]/g)) {
+                form_id = form_id.replace(/[Ｓｓ０-９]/g, function(s){
+                    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                });
+            }
+
+            var temp = form_id;
+            temp = temp.substr(0, 5);
+
+            if (temp.length >= 5 && !temp.match(/[^0-9]+/)) {
+                for (var i = 5, l = 9; i < l; i++) {
+                    if (isNaN(form_id[i])) {
+                        return 'S' + form_id.substr(0, i);
+                    }
+                }
+                return 'S' + form_id;
+            }
+
+
+            function indexOfAfterKeywords(keywords){
+                var inOf;
+
+                for (var i = 0, l = keywords.length; i < l; i++) {
+                    inOf = form_id.indexOf(keywords[i]);
+                    if (inOf != -1) {
+                        break;
+                    }
+                }
+                if (inOf != -1) {
+
+                    var result = inOf + keywords[i].length;
+
+                    if (result > 0) {
+                        return result;
+                    }
+                }
+                return false;
+            }
+
+            var keywords = ['gen/S', 'en/S', 'n/S', '/S', 'S'];
+            var inOf_key = indexOfAfterKeywords(keywords);
+
+            if (inOf_key) {
+
+                var temp;
+
+                for (var i = 8, l = 5; i >= l; i--) {
+                    temp = form_id.substr(inOf_key, i);
+                    if (temp.length == i && !temp.match(/[^0-9]+/)) {
+                        return 'S' + temp;
+                    }
+                }
+            }
+            return false;
+        }
+
+
+        $('.formzu-reload-button').click(getReloadFormId);
+
+        function getReloadFormId(){
+            var form_id = $(this).attr('data-form-id');
+            form_id = getFormIdFromString(form_id);
+
+            if (!form_id) {
+                alert("フォームID : " + form_id + "\n無効な値が入力されました。正確な値を入力してください。");
+                return false;
+            }
+
+            var $this = $(this);
+
+            $this.off('click');
+            $this.after('<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i>フォーム情報取得中...</p>');
+
+            $.ajax({
+                type: "POST",
+                url: formzu_ajax_obj.ajaxurl,
+                dataType: "json",
+                data: {
+                    "id": form_id,
+                    "security": formzu_ajax_obj.nonce,
+                    "action": formzu_ajax_obj.action
+                },
+                timeout: 30000,
+                success: function(response, dataType){
+                    var html        = $.parseHTML(response[0]);
+                    var mobile_html = $.parseHTML(response[1]);
+
+                    if (!html || !mobile_html) {
+                        alert("フォームID : " + form_id + "\nフォームが見つかりませんでした。");
+                        $('.fa-refresh').parent().remove();
+                        $('.formzu-reload-button').click(getReloadFormId);
+                        return false;
+                    }
+                    submitFormData('reload-form-data', {"form_id": form_id, "html": html, "mobile_html": mobile_html});
+                },
+                error: function(XMLHttpRequest, textStatus, error){
+                    console.error(error);
+                    console.log(XMLHttpRequest);
+                    console.log(textStatus);
+                }
+            });
+            return false;
+        }
+
+
+        $add_new_form = $('#add-new-form-data');
+
+        function getNewFormId(){
+            var form = document.forms['add-new-form-data'];
+
+            if (!form) {
+                return false;
+            }
+
+            var form_id = form.elements['form_id_URL'].value;
+
+            if (!form.elements['form_id_URL']) {
+                return false;
+            }
+
+            form_id = getFormIdFromString(form_id);
+
+            if (!form_id) {
+                alert("フォームID : " + form_id + "\n無効な値が入力されました。正確な値を入力してください。");
+                return false;
+            }
+            $('#add-new-form-submit').off('click');
+
+            var $input = $('#add-new-form-input');
+
+            $input.off('keypress');
+            $input.keypress(function(e){
+                e.preventDefault();
+                return false;
+            });
+            $add_new_form.after('<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i>フォーム情報取得中...</p>');
+
+            $.ajax({
+                type: "POST",
+                url: formzu_ajax_obj.ajaxurl,
+                dataType: "json",
+                data: {
+                    "id": form_id,
+                    "security": formzu_ajax_obj.nonce,
+                    "action": formzu_ajax_obj.action
+                },
+                success: function(response){
+                    var html        = $.parseHTML(response[0]);
+                    var mobile_html = $.parseHTML(response[1]);
+
+                    if (!html || !mobile_html) {
+                        alert('フォームID : ' + form_id + '\nフォームが見つかりませんでした。');
+                        $('.fa-refresh').parent().remove();
+                        $('#add-new-form-submit').click(getNewFormId);
+
+                        var $input = $('#add-new-form-input');
+
+                        $input.off('keypress');
+                        $input.keypress(getNewFormIdFromEnterKey);
+                        return false;
+                    }
+                    submitFormData('add-new-form-data', {"form_id": form_id, "html": html, "mobile_html": mobile_html});
+                },
+                error: function(XMLHttpRequest, textStatus, error){
+                    console.error(error);
+                    console.log(XMLHttpRequest);
+                    console.log(textStatus);
+                }
+            });
+            return false;
+        }
+
+
+        function getNewFormIdFromEnterKey(e){
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                getNewFormId();
+            }
+        }
+
+        $('#add-new-form-submit').click(getNewFormId);
+        $('#add-new-form-input').keypress(getNewFormIdFromEnterKey);
+    });
+})(jQuery);
+
