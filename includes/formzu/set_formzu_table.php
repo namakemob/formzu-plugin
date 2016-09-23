@@ -101,10 +101,8 @@ class FormzuListTable extends WP_List_Table
 
     function column_shortcode($item)
     {
-        return sprintf('<input type="text" style="font-size:12px; background:inherit;" onfocus="this.select()"; readonly="readonly" value="[formzu form_id=&quot;%1$s&quot; height=&quot;%2$s&quot; mobile_height=&quot;%3$s&quot; tagname=&quot;iframe&quot;]" class="large-text code">',
-            $item['id'],
-            $item['height'],
-            $item['mobile_height']
+        return sprintf('<input type="text" style="font-size:12px; background:inherit;" onfocus="this.select()"; readonly="readonly" value="[formzu form_id=&quot;%1$s&quot; tagname=&quot;iframe&quot;]" class="large-text code">',
+            $item['id']
         );
     }
 

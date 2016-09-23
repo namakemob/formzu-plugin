@@ -24,7 +24,7 @@ function create_formzu_form_page(){
 
     $post_data = array(
         'post_title' => $form_name,
-        'post_content' => '[formzu form_id="' . $form_id . '" height="' . $form_height . '" mobile_height="' . $form_mobile_height . '" tagname="iframe"]',
+        'post_content' => '[formzu form_id="' . $form_id . '" tagname="iframe"]',
         'post_name' => $form_id,
         'post_type' => 'page',
     );

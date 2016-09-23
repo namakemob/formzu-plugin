@@ -66,8 +66,8 @@ class FormzuDefaultWidget extends WP_Widget
 
         ?>
         <p>
-            表示するタイトル：<br>
-            <input type="text" id="<?php echo $id; ?>" name="<?php echo $name; ?>" value="<?php echo esc_attr($title); ?>" class="widefat" placeholder="タイトルとして表示させたい文字列を入力（空で非表示）" />
+            表示するタイトル文字列：<br>
+            <input type="text" id="<?php echo $id; ?>" name="<?php echo $name; ?>" value="<?php echo esc_attr($title); ?>" class="widefat" placeholder="タイトル文字列を入力（空で非表示）" />
         </p>
         <?php
     }
@@ -82,7 +82,7 @@ class FormzuDefaultWidget extends WP_Widget
         ?>
         <p>
             表示するリンク文字列：<br>
-            <input type="text" id="<?php echo $id; ?>" name="<?php echo $name; ?>" value="<?php echo esc_attr($form_text); ?>" class="widefat" placeholder="リンクとして表示させたい文字列を入力（空で非表示）" />
+            <input type="text" id="<?php echo $id; ?>" name="<?php echo $name; ?>" value="<?php echo esc_attr($form_text); ?>" class="widefat" placeholder="リンク文字列を入力（空で非表示）" />
         </p>
         <?php
     }
@@ -193,13 +193,13 @@ class FormzuDefaultWidget extends WP_Widget
         $plan = $par['form_plan'];
 
         if ($plan == 'new_tab') {
-            return '[formzu form_id="%s" text="%s" height="%s" mobile_height="%s" tagname="a"]';
+            return '[formzu form_id="%s" text="%s" tagname="a"]';
         }
         if ($plan == 'modal_window') {
-            return '[formzu form_id="%s" text="%s" thickbox="on" height="%s" mobile_height="%s" tagname="a"]';
+            return '[formzu form_id="%s" text="%s" thickbox="on" tagname="a"]';
         }
         if ($plan == 'new_window') {
-            return '[formzu form_id="%s" text="%s" new_window="on" height="%s" mobile_height="%s" tagname="a"]';
+            return '[formzu form_id="%s" text="%s" new_window="on" tagname="a"]';
         }
         return false;
     }
@@ -221,7 +221,7 @@ class FormzuDefaultWidget extends WP_Widget
             $titlelink_on = 'TRUE';
         }
         if ($titlelink_on) {
-            $html = sprintf($form_shortcode, $form_id, $par['title'], $form_height, $form_mobile_height);
+            $html = sprintf($form_shortcode, $form_id, $par['title']);
             echo do_shortcode($html);
         }
         else {
@@ -234,7 +234,7 @@ class FormzuDefaultWidget extends WP_Widget
             echo $par['form_text'];
         }
         else {
-            $html = sprintf($form_shortcode, $form_id, $par['form_text'], $form_height, $form_mobile_height);
+            $html = sprintf($form_shortcode, $form_id, $par['form_text']);
             echo do_shortcode($html);
         }
 

@@ -1,13 +1,12 @@
 <?php
 
-function add_formzu_shortcode( $atts ) {
-    //TODO: ###import###を有効化
 
+function add_formzu_shortcode( $atts ) {
     $atts = shortcode_atts( array(
         'form_id'       => 'No_form_id',
         'width'         => '600',
-        'height'        => '800',
-        'mobile_height' => '900',
+        'height'        => '',
+        'mobile_height' => '',
         'tagname'       => 'iframe',
         'text'          => '',
         'thickbox'      => 'off',
@@ -35,28 +34,52 @@ function add_formzu_shortcode( $atts ) {
         'new_window_on' => $new_window_on,
     );
 
-    $height = $atts['height'];
+    $height = get_formzu_form_height($atts['form_id'], $is_mobile);
 
-    if ( $is_mobile ) {
-        $height = $atts['mobile_height'];
-    }
-
-    $url = 'https://ws.formzu.net/fgen/' . $atts['form_id'];
     $shortcode_format = '<%tagname% %link% %id% %class% %style% %additional_atts%>%text%</%tagname%>';
 
     $shortcode_format = str_replace('%tagname%', $atts['tagname'], $shortcode_format);
-    $shortcode_format = set_link_to_formzu($atts, $url, $height, $opts, $shortcode_format);
+    $shortcode_format = set_link_to_formzu($atts, $height, $opts, $shortcode_format);
     $shortcode_format = set_id_of_element($atts['id'], $shortcode_format);
     $shortcode_format = set_class_of_element($atts['class'], $opts, $shortcode_format);
     $shortcode_format = set_style_of_element($atts['width'], $height, $opts, $shortcode_format);
-    $shortcode_format = set_additional_atts($atts['tagname'], $url, $height, $opts, $shortcode_format);
+    $shortcode_format = set_additional_atts($atts['tagname'], $atts['form_id'], $height, $opts, $shortcode_format);
     $shortcode_format = str_replace('%text%', $atts['text'], $shortcode_format);
 
     return $shortcode_format;
 }
 
 
-function set_link_to_formzu($atts, $url, $height, $opts, $format) {
+function get_formzu_form_height($form_id, $is_mobile) {
+    $height_prop_name = $is_mobile ? 'mobile_height' : 'height';
+
+    if ( empty($atts[$height_prop_name]) ) {
+        $height = get_height_from_formzu_option($height_prop_name, $form_id);
+    }
+    else {
+        $height = $atts[$height_prop_name];
+    }
+    if ( ! $height ) {
+        $height = $is_mobile ? '900' : '800';
+    }
+    return $height;
+}
+
+
+function get_height_from_formzu_option($height_prop_name, $form_id) {
+    $found_form = FormzuOptionHandler::find_option('form_data', array('id' => $form_id));
+
+    if ( ! $found_form ) {
+        return false;
+    }
+    if ( ! isset($found_form['item'][$height_prop_name]) ) {
+        return false;
+    }
+    return $found_form['item'][$height_prop_name];
+}
+
+
+function set_link_to_formzu($atts, $height, $opts, $format) {
     $link = '';
 
     if ($atts['tagname'] === 'a') {
@@ -66,13 +89,15 @@ function set_link_to_formzu($atts, $url, $height, $opts, $format) {
         $link = 'src="';
     }
 
-    $link .= $url;
 
     if ( $opts['is_mobile'] ) {
         $link .= 'https://ws.formzu.net/sfgen/' . $atts['form_id'];
     }
     elseif ( $opts['new_window_on'] ) {
         $link = 'href="javascript:void(0)';
+    }
+    else {
+        $link .= 'https://ws.formzu.net/fgen/' . $atts['form_id'];
     }
 
     if ( $opts['thickbox_on'] ) {
@@ -135,16 +160,17 @@ function set_style_of_element($width, $height, $opts, $format) {
 }
 
 
-function set_additional_atts($tagname, $url, $height, $opts, $format) {
+function set_additional_atts($tagname, $form_id, $height, $opts, $format) {
     $additional_atts = '';
 
     if ($tagname === 'a') {
         $additional_atts .= ' target="_blank"';
     }
     if ( ! $opts['is_mobile'] && $opts['new_window_on'] ) {
-        $additional_atts .= ' onClick="javascript:window.open(\'' . $url . '\', ' 
-            . '\'mailform1\', \'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollbars=yes, '
-            . 'width=600, height=' . $height . ', top=100, left=100\')"';
+        $additional_atts .= ' onClick="javascript:window.open(\''
+             . 'https://ws.formzu.net/fgen/' . $form_id . '\', '
+             . '\'mailform1\', \'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollbars=yes, '
+             . 'width=600, height=' . $height . ', top=100, left=100\')"';
     }
     if ( $opts['thickbox_on'] ) {
         $additional_atts .= ' data-origin-height="' . $height . '"';

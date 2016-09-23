@@ -35,11 +35,9 @@ function set_formzu_html_widgets() {
                 'before_title'  => '<h2 class="widget-title">',
                 'title_html'    => $widget_name,
                 'after_title'   => '</h2>',
-                'content_html'  => sprintf('[formzu text="%s" thickbox="on" form_id="%s" height="%s" mobile_height="%s" tagname="a"]',
+                'content_html'  => sprintf('[formzu text="%s" thickbox="on" form_id="%s" tagname="a"]',
                     $widget_name,
-                    $widgets[$i]['id'],
-                    $widgets[$i]['height'],
-                    $widgets[$i]['mobile_height']
+                    $widgets[$i]['id']
                 ),
                 'after_widget'  => '</section>',
             );
