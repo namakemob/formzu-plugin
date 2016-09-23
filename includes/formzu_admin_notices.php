@@ -17,14 +17,14 @@ function formzu_admin_notices() {
             $message = 'Error : 更新に失敗しました。';
 
         }
-        set_transient( 'my-custom-admin-updated', $message, 3 );
+        set_transient( 'formzu-admin-updated', $message, 3 );
     }
     if ( FormzuParamHelper::isset_key($_REQUEST, array('error', 'message')) ) {
-        set_transient( 'my-custom-admin-errors', $_REQUEST['message'], 3 );
+        set_transient( 'formzu-admin-errors', $_REQUEST['message'], 3 );
     }
 ?>
 
-    <?php if ( $messages = get_transient( 'my-custom-admin-errors' ) ) : ?>
+    <?php if ( $messages = get_transient( 'formzu-admin-errors' ) ) : ?>
     <div class = "notice my-error is-dismissible">
         <ul>
             <?php foreach( $messages as $message ): ?>
@@ -34,7 +34,7 @@ function formzu_admin_notices() {
     </div>
     <?php endif; ?>
 
-    <?php if ( $message = get_transient( 'my-custom-admin-updated' ) ) : ?>
+    <?php if ( $message = get_transient( 'formzu-admin-updated' ) ) : ?>
     <div class = "notice my-updated is-dismissible">
         <ul>
             <?php if ( strpos($message, 'script') || strpos($message, 'iframe') ) : ?>
@@ -46,7 +46,7 @@ function formzu_admin_notices() {
     </div>
     <?php endif; ?>
 
-    <?php if ( $message = get_transient( 'my-custom-admin-html' ) ) : ?>
+    <?php if ( $message = get_transient( 'formzu-admin-html' ) ) : ?>
     <div class = "notice my-updated is-dismissible">
         <ul>
             <?php if ( strpos($message, 'script') || strpos($message, 'iframe') ) : ?>
@@ -58,7 +58,7 @@ function formzu_admin_notices() {
     </div>
     <?php endif; ?>
 
-    <?php if ( $message = get_transient( 'my-custom-admin-error' ) ) : ?>
+    <?php if ( $message = get_transient( 'formzu-admin-error' ) ) : ?>
     <div class = "notice my-error is-dismissible">
         <ul>
             <?php if ( strpos($message, 'script') || strpos($message, 'iframe') ) : ?>

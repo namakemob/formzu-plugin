@@ -98,91 +98,91 @@ class Formzu_Plugin_Tour
 
     public function get_pointer_items()
     {
-        $h3 = '<h3>' . __('welcome to formzu', 'my-custom-admin') . '</h3>';
+        $h3 = '<h3>' . __('welcome to formzu', 'formzu-admin') . '</h3>';
         $left_center = array(
             'edge'  => 'left',
             'align' => 'center'
         );
         $admin_location = 'window.location="' . admin_url('plugins.php');
         $adminpages = array(
-            'my-custom-admin' => array(
+            'formzu-admin' => array(
                 array(
-                    'content'   => $h3 . '<p>' . __('「1 フォームズのページへ移動して新しくフォームを作成」をクリックしてください。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('フォームズのページを表示するボタンが２つ表示されます。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('フォームズのページでフォームを作成したのち、このページでフォームを追加することで、WordPress上でフォームが使用可能になります。', 'my-custom-admin') . '</p>',
+                    'content'   => $h3 . '<p>' . __('「1 フォームズのページへ移動して新しくフォームを作成」をクリックしてください。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('フォームズのページを表示するボタンが２つ表示されます。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('フォームズのページでフォームを作成したのち、このページでフォームを追加することで、WordPress上でフォームが使用可能になります。', 'formzu-admin') . '</p>',
                     'id'        => 'formzu-create-box',
                     'position'  => $left_center,
-                    'button2'   => __('次へ', 'my-custom-admin'),
-                    'button3'   => __('前へ', 'my-custom-admin'),
-                    'function2' => $admin_location . '?page=my-custom-admin&tour_counter=1";',
+                    'button2'   => __('次へ', 'formzu-admin'),
+                    'button3'   => __('前へ', 'formzu-admin'),
+                    'function2' => $admin_location . '?page=formzu-admin&tour_counter=1";',
                     'function3' => $admin_location . '";',
                 ),
                 array(
-                    'content'   => $h3 . '<p>' . __('「2 フォームズで作成したフォームIDを入力してください」をクリックしてください。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('フォームズのページで作成したフォームをWordPressへ登録するための登録フォームが表示されます。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('ここでフォームを登録することで、WordPress上で使用可能になります。', 'my-custom-admin') . '</p>',
+                    'content'   => $h3 . '<p>' . __('「2 フォームズで作成したフォームIDを入力してください」をクリックしてください。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('フォームズのページで作成したフォームをWordPressへ登録するための登録フォームが表示されます。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('ここでフォームを登録することで、WordPress上で使用可能になります。', 'formzu-admin') . '</p>',
                     'id'        => 'formzu-add-box',
                     'position'  => $left_center,
-                    'button2'   => __('次へ', 'my-custom-admin'),
-                    'button3'   => __('前へ', 'my-custom-admin'),
-                    'function2' => $admin_location . '?page=my-custom-admin&tour_counter=2";',
-                    'function3' => $admin_location . '?page=my-custom-admin";',
+                    'button2'   => __('次へ', 'formzu-admin'),
+                    'button3'   => __('前へ', 'formzu-admin'),
+                    'function2' => $admin_location . '?page=formzu-admin&tour_counter=2";',
+                    'function3' => $admin_location . '?page=formzu-admin";',
                 ),
                 array(
-                    'content'   => $h3 . '<p>' . __('「3 フォーム一覧」をクリックしてください。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('WordPressで使用可能なフォームの一覧が表示されます。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('ここでフォームの設置・編集・更新・削除などを行います。', 'my-custom-admin') . '</p>',
+                    'content'   => $h3 . '<p>' . __('「3 フォーム一覧」をクリックしてください。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('WordPressで使用可能なフォームの一覧が表示されます。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('ここでフォームの設置・編集・更新・削除などを行います。', 'formzu-admin') . '</p>',
                     'id'        => 'formzu-list-box',
                     'position'  => $left_center,
-                    'button2'   => __('次へ', 'my-custom-admin'),
-                    'button3'   => __('前へ', 'my-custom-admin'),
+                    'button2'   => __('次へ', 'formzu-admin'),
+                    'button3'   => __('前へ', 'formzu-admin'),
                     'function2' => $admin_location . '?page=how-to-use";',
-                    'function3' => $admin_location . '?page=my-custom-admin&tour_counter=1";',
+                    'function3' => $admin_location . '?page=formzu-admin&tour_counter=1";',
                 ),
                 array(
-                    'content'   => $h3 . '<p>' . __('以上で説明を終了します。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('「1 フォームズのページへ移動して新しくフォームを作成」をクリックして、フォームの作成を開始してください。', 'my-custom-admin') . '</p>',
+                    'content'   => $h3 . '<p>' . __('以上で説明を終了します。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('「1 フォームズのページへ移動して新しくフォームを作成」をクリックして、フォームの作成を開始してください。', 'formzu-admin') . '</p>',
                     'id'        => 'formzu-create-box',
                     'position'  => $left_center,
-                    'button2'   => __('使い方を読む', 'my-custom-admin'),
+                    'button2'   => __('使い方を読む', 'formzu-admin'),
                     'function2' => $admin_location . '?page=how-to-use";',
                 ),
                 //array(
-                //    'content' => $h3 . '<p>' . __('不安な方は「手順がわからないという方へ」をクリックしてください。', 'my-custom-admin') . '</p>'
-                //        . '<p>' . __('フォーム作成 -> 保存 -> 追加 -> 設置までの手順が表示されます。', 'my-custom-admin') . '</p>',
+                //    'content' => $h3 . '<p>' . __('不安な方は「手順がわからないという方へ」をクリックしてください。', 'formzu-admin') . '</p>'
+                //        . '<p>' . __('フォーム作成 -> 保存 -> 追加 -> 設置までの手順が表示されます。', 'formzu-admin') . '</p>',
                 //    'id' => 'formzu-step-box',
                 //    'position' => array(
                 //        'edge' => 'left',
                 //        'align' => 'center'
                 //    ),
-                //    'button2' => __('次へ', 'my-custom-admin'),
-                //    'button3' => __('前へ', 'my-custom-admin'),
+                //    'button2' => __('次へ', 'formzu-admin'),
+                //    'button3' => __('前へ', 'formzu-admin'),
                 //    'function2' => 'window.location="' . admin_url('admin.php') . '?page=how-to-use";',
-                //    'function3' => 'window.location="' . admin_url('admin.php') . '?page=my-custom-admin&tour_counter=2";',
+                //    'function3' => 'window.location="' . admin_url('admin.php') . '?page=formzu-admin&tour_counter=2";',
                 //),
             ),
             'how-to-use' => array(
                 array(
-                    'content'   => $h3 . '<p>' . __('この画面は当プラグインの使い方の説明画面です。', 'my-custom-admin') . '</p>'
-                                . '<p>' . __('基本的な使い方に加え、フォームを設置する方法について書かれています。', 'my-custom-admin') . '</p>',
+                    'content'   => $h3 . '<p>' . __('この画面は当プラグインの使い方の説明画面です。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('基本的な使い方に加え、フォームを設置する方法について書かれています。', 'formzu-admin') . '</p>',
                     'id'        => 'post-body',
                     'position'  => $left_center,
-                    'button2'   => __('次へ', 'my-custom-admin'),
-                    'button3'   => __('前へ', 'my-custom-admin'),
-                    'function2' => $admin_location . '?page=my-custom-admin&tour_counter=3";',
-                    'function3' => $admin_location . '?page=my-custom-admin&tour_counter=2";',
+                    'button2'   => __('次へ', 'formzu-admin'),
+                    'button3'   => __('前へ', 'formzu-admin'),
+                    'function2' => $admin_location . '?page=formzu-admin&tour_counter=3";',
+                    'function3' => $admin_location . '?page=formzu-admin&tour_counter=2";',
                 ),
             ),
             'plugin_page' => array(
                 array(
                     'content'   => $h3 . '<p>こちらの「フォームズ」をクリックして開始してください。</p>',
-                    'id'        => 'toplevel_page_my-custom-admin',
+                    'id'        => 'toplevel_page_formzu-admin',
                     'position'  => array(
                             'edge'  => 'top',
                             'align' => 'left'
                     ),
-                    'button2'   => __('次へ', 'my-custom-admin'),
-                    'function2' => $admin_location . '?page=my-custom-admin"',
+                    'button2'   => __('次へ', 'formzu-admin'),
+                    'function2' => $admin_location . '?page=formzu-admin"',
                 ),
             ),
         );
@@ -240,10 +240,10 @@ class Formzu_Plugin_Tour
             );
 
             if ( isset($page_item['button2']) ) {
-                $button2 = (!empty($page_item['button2'])) ? $page_item['button2'] : __('次へ', 'my-custom-admin');
+                $button2 = (!empty($page_item['button2'])) ? $page_item['button2'] : __('次へ', 'formzu-admin');
             }
             if ( isset($page_item['button3']) ) {
-                $button3 = (!empty($page_item['button3'])) ? $page_item['button3'] : __('前へ', 'my-custom-admin');
+                $button3 = (!empty($page_item['button3'])) ? $page_item['button3'] : __('前へ', 'formzu-admin');
             }
             if ( isset($page_item['function2']) ) {
                 $function2 = $page_item['function2'];
@@ -265,7 +265,7 @@ class Formzu_Plugin_Tour
 
                 formzu_pointer_options = $.extend(formzu_pointer_options, {
                     buttons: function(event, t){
-                        button = $('<a id="pointer-close" style="margin-left: 5px" class="button-secondary">' + '<?php echo __('閉じる', 'my-custom-admin'); ?>' + '</a>');
+                        button = $('<a id="pointer-close" style="margin-left: 5px" class="button-secondary">' + '<?php echo __('閉じる', 'formzu-admin'); ?>' + '</a>');
                         button.bind('click.pointer', function(){
                             t.element.pointer('close');
                         });

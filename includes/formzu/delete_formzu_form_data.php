@@ -20,14 +20,14 @@ function delete_formzu_form_data() {
     $delete_id  = $_REQUEST['id'];
 
     if ( isset($form_data[$delete_num]['id']) && $form_data[$delete_num]['id'] == $delete_id ) {
-        set_transient( 'my-custom-admin-updated', '<a href="https://ws.formzu.net/fgen/' . $delete_id . '/" target="_blank">'. $form_data[$delete_num]['name'] . '</a>' . __( ' を削除しました。'), 3 );
+        set_transient( 'formzu-admin-updated', '<a href="https://ws.formzu.net/fgen/' . $delete_id . '/" target="_blank">'. $form_data[$delete_num]['name'] . '</a>' . __( ' を削除しました。'), 3 );
 
         unset( $form_data[$delete_num] );
         $form_data = array_values( $form_data );
 
     }
     else {
-        set_transient( 'my-custom-admin-error', '<a href="https://ws.formzu.net/fgen/' . $delete_id . '/" target="_blank">対象フォーム</a>' . __( ' のデータがありませんでした。'), 3 );
+        set_transient( 'formzu-admin-error', '<a href="https://ws.formzu.net/fgen/' . $delete_id . '/" target="_blank">対象フォーム</a>' . __( ' のデータがありませんでした。'), 3 );
     }
     for ($i = 0, $len = count($form_data); $i < $len; $i++) {
 
@@ -55,7 +55,7 @@ function delete_formzu_form_data() {
         }
     }
     update_option('widget_formzu_default_widget', $default_widgets);
-    wp_safe_redirect( menu_page_url( 'my-custom-admin' ) );
+    wp_safe_redirect( menu_page_url( 'formzu-admin' ) );
     exit;
 }
 

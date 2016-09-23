@@ -142,7 +142,7 @@ class FormzuActionHooks
         require_once FORMZU_PLUGIN_PATH . '/alert_ie_browser_version.php';
         alert_ie_browser_version();
 
-        $key   = 'closedpostboxes_toplevel_page_my-custom-admin';
+        $key   = 'closedpostboxes_toplevel_page_formzu-admin';
         $value = array('formzu-create-box', 'formzu-add-box', 'formzu-list-box');
 
         add_user_meta(1, $key, $value);
@@ -165,7 +165,7 @@ class FormzuActionHooks
             }
         }
 
-        $page = 'toplevel_page_my-custom-admin';
+        $page = 'toplevel_page_formzu-admin';
 
         delete_metadata('user', 0, 'closedpostboxes_' . $page, '', true);
         delete_metadata('user', 0, 'meta-box-order_' . $page, '', true);

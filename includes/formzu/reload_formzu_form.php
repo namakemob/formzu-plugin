@@ -19,7 +19,7 @@ function reload_formzu_form() {
     }
 
     if ( empty($old_form_data) ) {
-        set_transient( 'my-custom-admin-error', '更新前のデータの取得に失敗しました。', 3 );
+        set_transient( 'formzu-admin-error', '更新前のデータの取得に失敗しました。', 3 );
         return false;
     }
 
@@ -38,7 +38,7 @@ function reload_formzu_form() {
     array_splice($form_data, $form_number, 1, array($reloaded));
     FormzuOptionHandler::update_option( 'form_data', $form_data );
 
-    $url = menu_page_url( 'my-custom-admin' ) . '&action=reloaded&name=' . $form_name;
+    $url = menu_page_url( 'formzu-admin' ) . '&action=reloaded&name=' . $form_name;
 
     if ( $form_name != $old_form_data['name'] ) {
         $url += ('&oldname=' . $old_form_data['name']);

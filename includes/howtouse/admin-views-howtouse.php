@@ -10,7 +10,7 @@ function echo_how_to_use_formzu() {
                 <div class="meta-box-sortables">
 
                     <div class="postbox categorydiv">
-                        <h3 class="hndle"><span><?php _e( '使い方', 'my-custom-admin' ); ?></span></h3>
+                        <h3 class="hndle"><span><?php _e( '使い方', 'formzu-admin' ); ?></span></h3>
                         <div class="inside" style="margin: 0;">
                             <div id="contextual-help-back"></div><!-- style="background: transparent;" -->
                             <div id="contextual-help-columns">

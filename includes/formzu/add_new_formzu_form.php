@@ -10,7 +10,7 @@ function add_new_formzu_form() {
 
     if ($form_id == 'none') {
         $message = 'ERROR: 10';
-        set_transient( 'my-custom-admin-errors', $message, 3 );
+        set_transient( 'formzu-admin-errors', $message, 3 );
     }
 
     $form_id = FormzuParamHelper::get_POS('hidden_id', $form_id);
@@ -26,7 +26,7 @@ function add_new_formzu_form() {
     for ($i = 0; $i < $form_number; $i++) {
         if ( isset($form_data[$i]['id']) && $form_data[$i]['id'] == $form_id ) {
 
-            $message = __('同じIDのフォーム（', 'my-custom-admin') . $form_data[$i]['name'] . __('）が、新しいフォーム（', 'my-custom-admin') . '<a href="https://ws.formzu.net/fgen/' . $form_id . '" target="_blank">' . $form_name . '</a>' . __('）によって上書きされました。', 'my-custom-admin');
+            $message = __('同じIDのフォーム（', 'formzu-admin') . $form_data[$i]['name'] . __('）が、新しいフォーム（', 'formzu-admin') . '<a href="https://ws.formzu.net/fgen/' . $form_id . '" target="_blank">' . $form_name . '</a>' . __('）によって上書きされました。', 'formzu-admin');
             $same_id_number = $i;
 
             break;
@@ -51,11 +51,11 @@ function add_new_formzu_form() {
     }
 
     if ( ! isset($message) ) {
-        $message = __( 'フォーム : ', 'my-custom-admin' ) . '<a href="https://ws.formzu.net/fgen/' . $form_id . '" target="_blank">' . $form_name . '</a>' . __('を追加しました。フォーム一覧を確認してください。', 'my-custom-admin');
+        $message = __( 'フォーム : ', 'formzu-admin' ) . '<a href="https://ws.formzu.net/fgen/' . $form_id . '" target="_blank">' . $form_name . '</a>' . __('を追加しました。フォーム一覧を確認してください。', 'formzu-admin');
     }
-    set_transient( 'my-custom-admin-updated', $message, 3 );
+    set_transient( 'formzu-admin-updated', $message, 3 );
     FormzuOptionHandler::update_option( 'form_data', $form_data );
-    wp_safe_redirect( menu_page_url( 'my-custom-admin' ) . '&action=added&number=' . $form_number );
+    wp_safe_redirect( menu_page_url( 'formzu-admin' ) . '&action=added&number=' . $form_number );
     exit;
 }
 

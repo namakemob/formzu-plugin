@@ -42,7 +42,7 @@ class FormzuListTable extends WP_List_Table
             ),
             'reload' => sprintf('<a href="%s?page=%s&action=%s&name=%s&id=%s" class="%s" data-form-id="%s"><i class="fa fa-refresh" aria-hidden="true"></i>更新</a>',
                 admin_url('admin.php'),
-                'my-custom-admin',
+                'formzu-admin',
                 'reload_form_data',
                 $item['name'],
                 $item['id'],
@@ -73,7 +73,7 @@ class FormzuListTable extends WP_List_Table
     function column_pagebutton($item)
     {
         $url = sprintf(admin_url('admin.php?page=%s&action=%s&name=%s&id=%s&height=%s&mobile_height=%s'),
-            'my-custom-admin',
+            'formzu-admin',
             'create_formzu_page',
             $item['name'],
             $item['id'],
@@ -125,11 +125,11 @@ class FormzuListTable extends WP_List_Table
         $columns = array(
             'cb' => '<input type="checkbox" />',
             'number' => 'No.',
-            'name' => __('タイトル', 'my-custom-admin'),
-            'pagebutton' => __('固定ページ作成ボタン', 'my-custom-admin'),
-            'widgetbutton' => __('ウィジェット作成ボタン', 'my-custom-admin'),
-            'shortcode' => __('ショートコード', 'my-custom-admin'),
-            'items' => __('項目', 'my-custom-admin')
+            'name' => __('タイトル', 'formzu-admin'),
+            'pagebutton' => __('固定ページ作成ボタン', 'formzu-admin'),
+            'widgetbutton' => __('ウィジェット作成ボタン', 'formzu-admin'),
+            'shortcode' => __('ショートコード', 'formzu-admin'),
+            'items' => __('項目', 'formzu-admin')
         );
         return $columns;
     }
@@ -150,8 +150,8 @@ class FormzuListTable extends WP_List_Table
     function get_bulk_actions()
     {
         $actions = array(
-            'delete_forms' => __( '消去', 'my-custom-admin' ),
-            'replace_forms' => __( '入れ替え', 'my-custom-admin' ),
+            'delete_forms' => __( '消去', 'formzu-admin' ),
+            'replace_forms' => __( '入れ替え', 'formzu-admin' ),
         );
         return $actions;
     }
@@ -178,7 +178,7 @@ class FormzuListTable extends WP_List_Table
             $action = 'bulk-' . $this->_args['plural'];
 
             if ( ! wp_verify_nonce($nonce, $action) ) {
-                $this->echo_notice_error( __('security check', 'my-custom-admin'));
+                $this->echo_notice_error( __('security check', 'formzu-admin'));
                 return false;
             }
         }
@@ -213,7 +213,7 @@ class FormzuListTable extends WP_List_Table
         }
         elseif ( 'replace_forms' == $action ) {
             if ( count($indexes) != 2 ) {
-                $this->echo_notice_error( __('「入れ替え」操作は入れ替えたい二つのフォームを指定して実行してください。', 'my-custom-admin') );
+                $this->echo_notice_error( __('「入れ替え」操作は入れ替えたい二つのフォームを指定して実行してください。', 'formzu-admin') );
             }
             else {
                 if ( $form_data[$indexes[1]]['number'] == $indexes[1] ) {

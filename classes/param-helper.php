@@ -96,7 +96,7 @@ class FormzuParamHelper
     }
 
 
-    public static function is_admin_page_of( $page = 'my-custom-admin')
+    public static function is_admin_page_of( $page = 'formzu-admin')
     {
         global $pagenow;
 

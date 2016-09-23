@@ -24,7 +24,7 @@ function formzu_delete_target_widget() {
 
         $widgets = array_values($widgets);
 
-        set_transient('my-custom-admin-updated', __('ウィジェットを消去しました。' . $widget_id, 'my-custom-admin'), 3);
+        set_transient('formzu-admin-updated', __('ウィジェットを消去しました。' . $widget_id, 'formzu-admin'), 3);
         FormzuOptionHandler::update_option('formzu_widgets', $widgets);
     }
     if (empty($widget_id)) {

@@ -24,7 +24,7 @@ function create_formzu_widget(){
     );
 
     if ($found_widget) {
-        set_transient( 'my-custom-admin-error',  __( '既にウィジェットが作成されている可能性があります。', 'my-custom-admin' ) . ' : ' . $widget_name, 3 );
+        set_transient( 'formzu-admin-error',  __( '既にウィジェットが作成されている可能性があります。', 'formzu-admin' ) . ' : ' . $widget_name, 3 );
         wp_safe_redirect( admin_url('widgets.php') . '?action=created_formzu_widget&name=' . $widget_name . '&id=' . $widget_id );
         exit;
         return false;
@@ -39,7 +39,7 @@ function create_formzu_widget(){
     );
     $widgets[] = $data;
 
-    set_transient( 'my-custom-admin-updated', __( $widget_name . 'のウィジェットを作成しました。', 'my-custom-admin' ), 3 );
+    set_transient( 'formzu-admin-updated', __( $widget_name . 'のウィジェットを作成しました。', 'formzu-admin' ), 3 );
     FormzuOptionHandler::update_option( 'formzu_widgets', $widgets );
     wp_safe_redirect( admin_url('widgets.php') . '?action=created_formzu_widget&name=' . $data['name'] . '&id=' . $data['id'] );
     exit;

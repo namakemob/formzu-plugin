@@ -110,7 +110,7 @@ function set_formzu_html_widgets() {
                 echo '</p>';
 
                 echo '<p>';
-                echo '<a href="' . wp_nonce_url(admin_url('widgets.php') . '?action=delete_formzu_widget&widget_id=' . $widget_id, 'delete_formzu_widget-' . $widget_id, 'delete_widget_nonce') . '">' . __('このウィジェットを完全に消去', 'my-custom-admin') . '</a>';
+                echo '<a href="' . wp_nonce_url(admin_url('widgets.php') . '?action=delete_formzu_widget&widget_id=' . $widget_id, 'delete_formzu_widget-' . $widget_id, 'delete_widget_nonce') . '">' . __('このウィジェットを完全に消去', 'formzu-admin') . '</a>';
                 echo '</p>';
                 echo '<input type="hidden" name="submitted" value="1" />';
             },

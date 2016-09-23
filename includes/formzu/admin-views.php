@@ -21,9 +21,9 @@ function echo_formzu_admin_page() {
                         <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
                         <?php wp_nonce_field('meta-box-order',  'meta-box-order-nonce', false); ?>
 
-                        <?php add_meta_box('formzu-create-box', '<span class="box-icon">1<i class="fa fa-external-link" aria-hidden="true"></i></span>' . __(' フォームズへ移動して新しくフォームを作成します（別ページ）', 'my-custom-admin'), 'echo_create_formzu_form_body', $page); ?>
-                        <?php add_meta_box('formzu-add-box',    '<span class="box-icon">2<i class="fa fa-plus" aria-hidden="true"></i></span>' . __(' フォームズで作成したフォームIDを入力してください', 'my-custom-admin'), 'echo_add_formzu_form_body', $page); ?>
-                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span>' . __(' フォーム一覧', 'my-custom-admin'), 'echo_formzu_list_body', $page); ?>
+                        <?php add_meta_box('formzu-create-box', '<span class="box-icon">1<i class="fa fa-external-link" aria-hidden="true"></i></span>' . __(' フォームズへ移動して新しくフォームを作成します（別ページ）', 'formzu-admin'), 'echo_create_formzu_form_body', $page); ?>
+                        <?php add_meta_box('formzu-add-box',    '<span class="box-icon">2<i class="fa fa-plus" aria-hidden="true"></i></span>' . __(' フォームズで作成したフォームIDを入力してください', 'formzu-admin'), 'echo_add_formzu_form_body', $page); ?>
+                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span>' . __(' フォーム一覧', 'formzu-admin'), 'echo_formzu_list_body', $page); ?>
 
                         <?php do_meta_boxes($page, 'advanced', null); ?>
                 </div>
@@ -153,11 +153,11 @@ function echo_formzu_list_body() {
 
 ?>
     <?php if ( ! empty( $_REQUEST['s'] ) ) {
-        echo sprintf( '<span class="subtitle"> ' . __( '検索結果：', 'my-custom-admin' ) . '%s </span>', esc_html( $_REQUEST['s'] ) );
+        echo sprintf( '<span class="subtitle"> ' . __( '検索結果：', 'formzu-admin' ) . '%s </span>', esc_html( $_REQUEST['s'] ) );
     }?>
     <form id="forms-filter" method="get">
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-        <?php $list_table->search_box( __( '検索', 'my-custom-admin' ), 'formzu_search'); ?>
+        <?php $list_table->search_box( __( '検索', 'formzu-admin' ), 'formzu_search'); ?>
         <?php $list_table->display(); ?>
     </form>
     
