@@ -1,36 +1,36 @@
-=== Formzu Plugin ===
+=== Formzu WP ===
 Contributors: hirokioyamada
 Donate link: 
-Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, �t�H�[��
+Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, フォーム
 Requires at least: 4.6
 Tested up to: 4.6.1
 Stable tag: 1.0.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-���[���t�H�[�������쐬�T�[�r�X�u�t�H�[���Y�v�̃t�H�[���̐ݒu�������ƊȒP�ɂ��܂��B
+メールフォーム無料作成サービス「フォームズ」のフォームの設置をもっと簡単にします。
 
 == Description ==
 
-`�t�H�[���Y`�́A���[���t�H�[���̃����^���T�[�r�X��񋟂��Ă��܂��B�C���^�[�l�b�g���g���āA�⍇���̎�t��A���P�[�g�̕�W���A���낢��ȃt�H�[������邱�Ƃ��ł��܂��B
-���[���t�H�[���ɕK�v�ȋ@�\���قƂ�Ǒ������Ă���_�ƁA���߂Ă̐l�ł��A�����Ɏg����悤�ɑ����ʂ𕪂���₷�����Ă���̂������ł��B
+`フォームズ`は、メールフォームのレンタルサービスを提供しています。インターネットを使って、問合せの受付やアンケートの募集等、いろいろなフォームを作ることができます。
+メールフォームに必要な機能をほとんど装備している点と、初めての人でも、すぐに使えるように操作画面を分かりやすくしているのが特長です。
 
-���̃v���O�C���ł́A�t�H�[���Y�ō�����t�H�[���̐ݒu���AWordPress�Ǘ���ʂŊȒP�ɍs����悤�ɂ��܂��B
+このプラグインでは、フォームズで作ったフォームの設置を、WordPress管理画面で簡単に行えるようにします。
 
 
-**�ڂ����g����**
-�v���O�C�����C���X�g�[��������A�Ǘ���ʂ̍������C�����j���[�o�[���u�t�H�[���Y�v���ڒ����́u�g�����v���������������B
+**詳しい使い方**
+プラグインをインストールした後、管理画面の左側メインメニューバー内「フォームズ」項目直下の「使い方」をご覧ください。
 
-**�@�\**
-�Œ�y�[�W�쐬
-�i�r�Q�[�V�������j���[�t�H�[���ݒu���ڒǉ�
-�t�H�[���ݒu�p�E�B�W�F�b�g�ǉ�
-�V���[�g�R�[�h����
+**機能**
+固定ページ作成
+ナビゲーションメニューフォーム設置項目追加
+フォーム設置用ウィジェット追加
+ショートコード生成
 
 == Installation ==
 
-1. formzu-plugin�t�H���_��/wp-content/plugins/�f�B���N�g���ɃA�b�v���[�h���Ă��������B
-2. �u�v���O�C���v���j���[�́uFormzu Plugin�v��L�������Ă��������B
+1. formzu-pluginフォルダを/wp-content/plugins/ディレクトリにアップロードしてください。
+2. 「プラグイン」メニューの「Formzu Plugin」を有効化してください。
 
 == Frequently asked questions ==
 
