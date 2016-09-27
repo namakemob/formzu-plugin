@@ -34,8 +34,10 @@ function create_formzu_form_page(){
     );
     $post_id = wp_insert_post( $post_data, true );
 
-    $url = admin_url('post.php') . '?post=' . $post_id . '&action=edit';
-    wp_safe_redirect(esc_url($url));
+    $url_atts = 'post=' . $post_id . '&action=edit';
+    $url      = admin_url('post.php') . '?' . sanitize_text_field($url_atts);
+
+    wp_safe_redirect($url);
     exit;
 }
 

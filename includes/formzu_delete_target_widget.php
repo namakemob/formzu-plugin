@@ -11,12 +11,7 @@ function formzu_delete_target_widget() {
         return $widgets;
     }
 
-    $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 'No_id';
-    $id = FormzuParamHelper::validate_form_id($id);
-
-    if ( ! $id ) {
-        return $widgets;
-    }
+    $id = isset($_REQUEST['id']) ? FormzuParamHelper::validate_form_id($_REQUEST['id']) : 'No_id';
 
     $found_widget = FormzuOptionHandler::find_option('formzu_widgets',
         array(
@@ -54,6 +49,7 @@ function formzu_delete_target_widget() {
             }
         }
     }
+
     update_option( 'sidebars_widgets', $active_widgets );
     return $widgets;
 }

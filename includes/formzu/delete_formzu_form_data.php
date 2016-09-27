@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined('FORMZU_PLUGIN_PHP') ) {
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
     die();
 }
 
@@ -20,7 +20,7 @@ function delete_formzu_form_data() {
 
     $form_data  = FormzuOptionHandler::get_option('form_data');
     $form_data  = array_values( $form_data );
-    $delete_num = $_REQUEST['number'];
+    $delete_num = intval($_REQUEST['number']);
     $delete_id  = FormzuParamHelper::validate_form_id($_REQUEST['id']);
 
     if ( isset($form_data[$delete_num]['id']) && $form_data[$delete_num]['id'] == $delete_id ) {

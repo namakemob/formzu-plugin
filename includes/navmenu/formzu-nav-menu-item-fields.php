@@ -66,13 +66,11 @@ class FormzuNavMenuItemFields
 
         $url = $_POST['menu-item-url'][$post_id];
 
-        if (strlen(strval($url)) > 10) {
-            return;
-        }
-
         if ( isset($_POST['menu-item-object'][$post_id]) && $_POST['menu-item-object'][$post_id] == 'post_type_formzu_link' ) {
 
             $url = stripslashes($url);
+            $url = sanitize_text_field($url);
+            $url = esc_url($url);
 
             update_post_meta($post_id, '_menu_item_url',    $url);
             update_post_meta($post_id, '_menu_item_type',   'formzu_link');

@@ -42,11 +42,14 @@ function reload_formzu_form() {
     array_splice($form_data, $form_number, 1, array($reloaded));
     FormzuOptionHandler::update_option( 'form_data', $form_data );
 
-    $url = menu_page_url( 'formzu-admin' ) . '&action=reloaded&name=' . $form_name;
+    $url_atts = '&action=reloaded&name=' . $form_name;
 
     if ( $form_name != $old_form_data['name'] ) {
-        $url += ('&oldname=' . $old_form_data['name']);
+        $url_atts .= ('&oldname=' . $old_form_data['name']);
     }
+
+    $url = menu_page_url( 'formzu-admin' ) . sanitize_text_field($url_atts);
+
     wp_safe_redirect($url);
     exit;
 }

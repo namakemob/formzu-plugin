@@ -55,10 +55,8 @@ class FormzuListTable extends WP_List_Table
             ),
             'delete' => sprintf('<a href=%s><i class="fa fa-times" aria-hidden="true"></i>削除</a>',
                 wp_nonce_url(
-                    esc_url(
-                        admin_url(
-                            'admin.php?page=' . $_REQUEST['page'] . '&action=delete_form&id=' . $item['id'] . '&number=' . $item['number'] . '&widget_id=formzu_widget-' . strval($item['number'] + 2)
-                        )
+                    admin_url(
+                        'admin.php?' . sanitize_text_field('page=' . $_REQUEST['page'] . '&action=delete_form&id=' . $item['id'] . '&number=' . $item['number'] . '&widget_id=formzu_widget-' . strval($item['number'] + 2))
                     ),
                     'delete_form-' . $item['id'],
                     'delete_nonce'

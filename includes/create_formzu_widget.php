@@ -14,7 +14,7 @@ function create_formzu_widget(){
         return false;
     }
 
-    $widget_id = FormzuParamHelper::validate_form_id($widget_id);
+    $widget_id = FormzuParamHelper::validate_form_id($_REQUEST['id']);
     $widget_name = strval($_REQUEST['name']);
 
     if ( ! $widget_id || ! $widget_name ) {
@@ -34,9 +34,10 @@ function create_formzu_widget(){
     if ($found_widget) {
         set_transient( 'formzu-admin-error',  __( '既にウィジェットが作成されている可能性があります。', 'formzu-admin' ) . ' : ' . $widget_name, 3 );
 
-        $url = admin_url('widgets.php') . '?action=created_formzu_widget&name=' . $widget_name . '&id=' . $widget_id; 
+        $url_atts = 'action=created_formzu_widget&name=' . $widget_name . '&id=' . $widget_id; 
+        $url      = admin_url('widgets.php') . '?' . sanitize_text_field($url_atts);
 
-        wp_safe_redirect(esc_url($url));
+        wp_safe_redirect($url);
         exit;
         return false;
     }
@@ -53,9 +54,10 @@ function create_formzu_widget(){
     set_transient( 'formzu-admin-updated', __( $widget_name . 'のウィジェットを作成しました。', 'formzu-admin' ), 3 );
     FormzuOptionHandler::update_option( 'formzu_widgets', $widgets );
 
-    $url = admin_url('widgets.php') . '?action=created_formzu_widget&name=' . $data['name'] . '&id=' . $data['id'];
+    $url_atts = 'action=created_formzu_widget&name=' . $data['name'] . '&id=' . $data['id'];
+    $url      = admin_url('widgets.php') . '?' . sanitize_text_field($url_atts);
 
-    wp_safe_redirect(esc_url($url));
+    wp_safe_redirect($url);
     exit;
 }
 
