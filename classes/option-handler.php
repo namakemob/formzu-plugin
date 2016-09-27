@@ -86,6 +86,10 @@ class FormzuOptionHandler
         $items = $options[$item_key];
         $item;
 
+        if ( ! is_array($items) ) {
+            return false;
+        }
+
         for ($i = 0, $l = count($items); $i < $l; $i++) {
             foreach ($search_query as $query_key => $query_value) {
                 if ( isset($items[$i][$query_key]) && $items[$i][$query_key] == $query_value ) {

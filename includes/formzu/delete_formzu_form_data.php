@@ -21,7 +21,7 @@ function delete_formzu_form_data() {
     $form_data  = FormzuOptionHandler::get_option('form_data');
     $form_data  = array_values( $form_data );
     $delete_num = $_REQUEST['number'];
-    $delete_id  = $_REQUEST['id'];
+    $delete_id  = FormzuParamHelper::validate_form_id($_REQUEST['id']);
 
     if ( isset($form_data[$delete_num]['id']) && $form_data[$delete_num]['id'] == $delete_id ) {
         set_transient( 'formzu-admin-updated', '<a href="https://ws.formzu.net/fgen/' . $delete_id . '/" target="_blank">'. $form_data[$delete_num]['name'] . '</a>' . __( ' を削除しました。'), 3 );
@@ -51,7 +51,7 @@ function delete_formzu_form_data() {
 
         $w_data = $default_widgets[$key]['form_widget_data'];
 
-        if (strpos($w_data, $_REQUEST['id']) !== false) {
+        if (strpos($w_data, $delete_id) !== false) {
 
             unset( $default_widgets[$key] );
             $default_widgets = array_values($default_widgets);

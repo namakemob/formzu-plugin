@@ -212,7 +212,7 @@ class Formzu_Plugin_Tour
         }
         //同じページで複数の案内を表示させるためのカウンター
         if ( isset($_GET['tour_counter']) ) {
-            $index = $_GET['tour_counter'];
+            $index = intval($_GET['tour_counter']);
         }
         if ( empty($index) ) {
             $index = 0;

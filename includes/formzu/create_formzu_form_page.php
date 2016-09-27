@@ -22,7 +22,7 @@ function create_formzu_form_page(){
     }
 
     $form_name          = $_REQUEST['name'];
-    $form_id            = $_REQUEST['id'];
+    $form_id            = FormzuParamHelper::validate_form_id($_REQUEST['id']);
     $form_height        = FormzuParamHelper::get_REQ('height', 600);
     $form_mobile_height = FormzuParamHelper::get_REQ('mobile_height', 700);
 
@@ -34,7 +34,8 @@ function create_formzu_form_page(){
     );
     $post_id = wp_insert_post( $post_data, true );
 
-    wp_safe_redirect( admin_url('post.php') . '?post=' . $post_id . '&action=edit' );
+    $url = admin_url('post.php') . '?post=' . $post_id . '&action=edit';
+    wp_safe_redirect(esc_url($url));
     exit;
 }
 

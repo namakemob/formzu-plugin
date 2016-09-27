@@ -12,6 +12,12 @@ function formzu_delete_target_widget() {
     }
 
     $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 'No_id';
+    $id = FormzuParamHelper::validate_form_id($id);
+
+    if ( ! $id ) {
+        return $widgets;
+    }
+
     $found_widget = FormzuOptionHandler::find_option('formzu_widgets',
         array(
             'widget_id' => $_REQUEST['widget_id'],

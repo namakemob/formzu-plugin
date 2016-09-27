@@ -159,5 +159,36 @@ class FormzuParamHelper
         }
         return true;
     }
+
+    public static function validate_form_id($widget_id) {
+        if ( ! $widget_id ) {
+            return false;
+        }
+
+        $widget_id = strval($widget_id);;
+
+        if ($widget_id[0] != 'S') {
+
+            $inOf_S = strpos($widget_id, 'S');
+
+        }
+
+        if ($inOf_S === false) {
+            $widget_id = substr($widget_id, 0, 9);
+            if ( ! ctype_digit($widget_id) ) {
+                return false;
+            }
+            $widget_id = 'S' . $widget_id;
+        }
+        else {
+            $widget_id = substr($widget_id, $inOf_S, 9);
+        }
+
+        if (strlen($widget_id) < 6) {
+            return false;
+        }
+        return $widget_id;
+    }
+
 }
 
