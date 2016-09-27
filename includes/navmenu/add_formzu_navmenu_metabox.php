@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function add_formzu_navmenu_metabox() {
     add_meta_box(
         FORMZU_NAVMENU_METABOX_ID,
@@ -15,9 +19,9 @@ function add_formzu_navmenu_metabox() {
 function add_metabox_callback() {
     global $nav_menu_selected_id;
 
-    $id = FORMZU_NAVMENU_SELECT_ID;
+    $id        = FORMZU_NAVMENU_SELECT_ID;
     $form_data = FormzuOptionHandler::get_option('form_data', array());
-    $html = '<p><span>リンクさせるフォーム：</span><br>';
+    $html      = '<p><span>リンクさせるフォーム：</span><br>';
 
     $html .= sprintf(
         '<select id="%s">',
@@ -25,7 +29,7 @@ function add_metabox_callback() {
     );
     for ($i = 0, $l = count($form_data); $i < $l; $i++) {
 
-        $data = $form_data[$i];
+        $data  = $form_data[$i];
         $value = $data['id'];
 
         $html .= sprintf(

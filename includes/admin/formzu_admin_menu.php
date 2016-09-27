@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function formzu_admin_menu() {
     $slag_list = array(
         'formzu'   => 'formzu-admin',

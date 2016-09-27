@@ -1,5 +1,8 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
 
 function add_formzu_shortcode( $atts ) {
     $atts = shortcode_atts( array(
@@ -15,9 +18,9 @@ function add_formzu_shortcode( $atts ) {
         'class'         => '',
     ), $atts, 'formzu' );
 
-    $thickbox_on = FALSE;
+    $thickbox_on   = FALSE;
     $new_window_on = FALSE;
-    $is_mobile = wp_is_mobile();
+    $is_mobile     = wp_is_mobile();
 
     if ( $atts['tagname'] == 'a' && ! $is_mobile ) {
         if ( $atts['thickbox'] == 'on' || strpos($atts['class'], 'thickbox') !== false ) {
@@ -40,10 +43,10 @@ function add_formzu_shortcode( $atts ) {
 
     $shortcode_format = str_replace('%tagname%', $atts['tagname'], $shortcode_format);
     $shortcode_format = set_link_to_formzu($atts, $height, $opts, $shortcode_format);
-    $shortcode_format = set_id_of_element($atts['id'], $shortcode_format);
-    $shortcode_format = set_class_of_element($atts['class'], $opts, $shortcode_format);
-    $shortcode_format = set_style_of_element($atts['width'], $height, $opts, $shortcode_format);
-    $shortcode_format = set_additional_atts($atts['tagname'], $atts['form_id'], $height, $opts, $shortcode_format);
+    $shortcode_format = formzu_set_id_of_element($atts['id'], $shortcode_format);
+    $shortcode_format = formzu_set_class_of_element($atts['class'], $opts, $shortcode_format);
+    $shortcode_format = formzu_set_style_of_element($atts['width'], $height, $opts, $shortcode_format);
+    $shortcode_format = formzu_set_additional_atts($atts['tagname'], $atts['form_id'], $height, $opts, $shortcode_format);
     $shortcode_format = str_replace('%text%', $atts['text'], $shortcode_format);
 
     return $shortcode_format;
@@ -112,7 +115,7 @@ function set_link_to_formzu($atts, $height, $opts, $format) {
 }
 
 
-function set_id_of_element($elem_id, $format) {
+function formzu_set_id_of_element($elem_id, $format) {
     $id = '';
 
     if ( ! empty($elem_id) ) {
@@ -125,7 +128,7 @@ function set_id_of_element($elem_id, $format) {
 }
 
 
-function set_class_of_element($elem_class, $opts, $format) {
+function formzu_set_class_of_element($elem_class, $opts, $format) {
     $class = '';
 
     if ( ! empty($elem_class) ) {
@@ -147,7 +150,7 @@ function set_class_of_element($elem_class, $opts, $format) {
 }
 
 
-function set_style_of_element($width, $height, $opts, $format) {
+function formzu_set_style_of_element($width, $height, $opts, $format) {
     $style = '';
 
     if ( ! $opts['new_window_on'] ) {
@@ -160,7 +163,7 @@ function set_style_of_element($width, $height, $opts, $format) {
 }
 
 
-function set_additional_atts($tagname, $form_id, $height, $opts, $format) {
+function formzu_set_additional_atts($tagname, $form_id, $height, $opts, $format) {
     $additional_atts = '';
 
     if ($tagname === 'a') {

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function formzu_page_button_actions() {
 ?>
     <script>
@@ -11,7 +15,7 @@ function formzu_page_button_actions() {
 
             $('#goto-formzu-page-button').on('click', function(){
 
-                var window_width = $(window).width();
+                var window_width  = $(window).width();
                 var window_height = $(window).height();
 
                 if ($('#formzu-iframe-container').length) {
@@ -35,12 +39,12 @@ function formzu_page_button_actions() {
 
                 var $container = $('<div id="formzu-iframe-container">').css({
                     'background-color': 'white',
-                    'width':            '100%',
-                    'height':           window_height,
-                    'position':         'absolute',
-                    'top':              '0',
-                    'left':             window_width,
-                    'border':           'solid 1px #777'
+                    'width'           : '100%',
+                    'height'          : window_height,
+                    'position'        : 'absolute',
+                    'top'             : '0',
+                    'left'            : window_width,
+                    'border'          : 'solid 1px #777'
                 });
 
                 $container.animate({
@@ -63,15 +67,15 @@ function formzu_page_button_actions() {
                 var $close_button = $('<div><i class="fa fa-arrow-right" aria-hidden="true"></i>元の画面へ戻る</div>');
 
                 $close_button.css({
-                    'color':         '#999',
+                    'color'        : '#999',
                     'border-bottom': '1px solid #999',
-                    'font-size':     '1.8em',
-                    'font-family':   '"Meiryo","MS PGothic", Arial, "ヒラギノ角ゴ Pro W3", sans-serif',
-                    'font-weight':   'bold',
-                    'padding':       '4px 16px',
-                    'cursor':        'pointer',
-                    'padding':       '16px 14px',
-                    'left':          window_width
+                    'font-size'    : '1.8em',
+                    'font-family'  : '"Meiryo","MS PGothic", Arial, "ヒラギノ角ゴ Pro W3", sans-serif',
+                    'font-weight'  : 'bold',
+                    'padding'      : '4px 16px',
+                    'cursor'       : 'pointer',
+                    'padding'      : '16px 14px',
+                    'left'         : window_width
                 }).hover(function(){
                     $(this).css({
                         'color': '#555'
@@ -99,11 +103,12 @@ function formzu_page_button_actions() {
 
                 $iframe.css({
                     'height': '90%',
-                    'width': 'inherit'
+                    'width' : 'inherit'
                 });
 
                 function flashBackButton(cb){
                     var options = {};
+
                     if (cb) {
                         options.complete = cb;
                     }
@@ -133,3 +138,4 @@ function formzu_page_button_actions() {
     </script>
 <?php
 }
+

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function set_formzu_table_column_size() {
     echo '<style type="text/css">';
     echo '.wp-list-table .column-cb { width: 3%; }';

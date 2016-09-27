@@ -1,15 +1,18 @@
 <?php
 /*
-Plugin Name: Formzu Plugin
+Plugin Name: Formzu WP
 Plugin URI: http://www.formzu.com/
-Description: Formzu Plugin
+Description: Formzu WP 
 Version: 0.1.0
-Author: Formzu
+Author: hirokioyamada
 Author URI: http://www.formzu.com/
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+if ( ! defined('ABSPATH') ) {
+    exit;
+}
 
 define( 'FORMZU_PLUGIN_PATH',        untrailingslashit(dirname(__FILE__)) );
 define( 'FORMZU_PLUGIN_JS_PATH',     FORMZU_PLUGIN_PATH . '/js' );

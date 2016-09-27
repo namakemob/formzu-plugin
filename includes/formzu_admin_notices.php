@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function formzu_admin_notices() {
     if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'reloaded') {
         if (isset($_REQUEST['name']) && isset($_REQUEST['oldname'])) {

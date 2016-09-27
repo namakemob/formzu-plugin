@@ -139,8 +139,8 @@ class FormzuActionHooks
     {
         add_action('admin_enqueue_scripts', array('Formzu_Plugin_Tour', 'get_instance'));
 
-        require_once FORMZU_PLUGIN_PATH . '/alert_ie_browser_version.php';
-        alert_ie_browser_version();
+        require_once FORMZU_PLUGIN_PATH . '/formzu_alert_ie_browser_version.php';
+        formzu_alert_ie_browser_version();
 
         $key   = 'closedpostboxes_toplevel_page_formzu-admin';
         $value = array('formzu-create-box', 'formzu-add-box', 'formzu-list-box');

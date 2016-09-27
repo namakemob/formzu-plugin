@@ -1,11 +1,18 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function get_iframe_height() {
     if ( ! check_ajax_referer('get_iframe_height', 'security', FALSE) ) {
         die('security error');
     }
     if ( ! isset($_POST['id']) ) {
         die('parameter error');
+    }
+    if ( ! strlen(strval($_POST['id'])) > 10 ) {
+        die('too long form id');
     }
 
     $id_num      = $_POST['id'];

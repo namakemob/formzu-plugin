@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function formzu_navmenu_enqueue_js() {
     wp_enqueue_script(
         'formzu_navmenu_submit_button',
@@ -13,12 +17,12 @@ function formzu_navmenu_enqueue_js() {
         'formzu_navmenu_submit_button',
         'formzu_ajax_obj',
         array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce( FORMZU_NAVMENU_NONCE),
-            'action' => FORMZU_NAVMENU_NONCE,
+            'ajaxurl'    => admin_url('admin-ajax.php'),
+            'nonce'      => wp_create_nonce( FORMZU_NAVMENU_NONCE),
+            'action'     => FORMZU_NAVMENU_NONCE,
             'metabox_id' => FORMZU_NAVMENU_METABOX_ID,
-            'select_id' => FORMZU_NAVMENU_SELECT_ID,
-            'submit_id' => FORMZU_NAVMENU_SUBMIT_ID,
+            'select_id'  => FORMZU_NAVMENU_SELECT_ID,
+            'submit_id'  => FORMZU_NAVMENU_SUBMIT_ID,
         )
     );
 }

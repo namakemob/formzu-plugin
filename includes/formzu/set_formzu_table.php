@@ -1,6 +1,10 @@
 <?php
 
-if ( !class_exists( 'WP_List_Table' ) ) {
+if ( ! defined('FORMZU_PLUGIN_PATH') || ! defined('ABSPATH') ) {
+    die();
+}
+
+if ( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
 
@@ -12,8 +16,8 @@ class FormzuListTable extends WP_List_Table
 
         parent::__construct( array(
             'singular' => 'form',
-            'plural' => 'forms',
-            'ajax' => false
+            'plural'   => 'forms',
+            'ajax'     => false
         ) );
     }
 
@@ -121,13 +125,13 @@ class FormzuListTable extends WP_List_Table
     public function get_columns()
     {
         $columns = array(
-            'cb' => '<input type="checkbox" />',
-            'number' => 'No.',
-            'name' => __('タイトル', 'formzu-admin'),
-            'pagebutton' => __('固定ページ作成ボタン', 'formzu-admin'),
+            'cb'           => '<input type="checkbox" />',
+            'number'       => 'No.',
+            'name'         => __('タイトル', 'formzu-admin'),
+            'pagebutton'   => __('固定ページ作成ボタン', 'formzu-admin'),
             'widgetbutton' => __('ウィジェット作成ボタン', 'formzu-admin'),
-            'shortcode' => __('ショートコード', 'formzu-admin'),
-            'items' => __('項目', 'formzu-admin')
+            'shortcode'    => __('ショートコード', 'formzu-admin'),
+            'items'        => __('項目', 'formzu-admin')
         );
         return $columns;
     }
@@ -138,7 +142,7 @@ class FormzuListTable extends WP_List_Table
     {
         $sortable_columns = array(
             'number' => array('number', true),
-            'name' => array('name', false),
+            'name'   => array('name', false),
         );
         return $sortable_columns;
     }
@@ -148,7 +152,7 @@ class FormzuListTable extends WP_List_Table
     function get_bulk_actions()
     {
         $actions = array(
-            'delete_forms' => __( '消去', 'formzu-admin' ),
+            'delete_forms'  => __( '消去', 'formzu-admin' ),
             'replace_forms' => __( '入れ替え', 'formzu-admin' ),
         );
         return $actions;
@@ -172,7 +176,7 @@ class FormzuListTable extends WP_List_Table
     {
         if ( FormzuParamHelper::isset_key($_GET, '_wpnonce') ) {
 
-            $nonce = filter_input(INPUT_GET, '_wpnonce', FILTER_SANITIZE_STRING);
+            $nonce  = filter_input(INPUT_GET, '_wpnonce', FILTER_SANITIZE_STRING);
             $action = 'bulk-' . $this->_args['plural'];
 
             if ( ! wp_verify_nonce($nonce, $action) ) {
@@ -188,7 +192,7 @@ class FormzuListTable extends WP_List_Table
         }
 
         $form_data = FormzuOptionHandler::get_option('form_data', array());
-        $indexes = array();
+        $indexes   = array();
 
         if ( FormzuParamHelper::isset_key($_GET, 'checked_forms_index') ) {
             $indexes = $_GET['checked_forms_index'];
@@ -204,7 +208,9 @@ class FormzuListTable extends WP_List_Table
                     unset($form_data[$i]);
                 }
             }
+
             $form_data = array_values($form_data);
+
             for ($i = 0, $l = count($form_data); $i < $l; $i++) {
                 $form_data[$i]['number'] = $i;
             }
@@ -215,12 +221,16 @@ class FormzuListTable extends WP_List_Table
             }
             else {
                 if ( $form_data[$indexes[1]]['number'] == $indexes[1] ) {
+
                     $temp = array_splice($form_data, $indexes[1], 1);
                     $temp[0]['number'] = $indexes[0];
+
                 }
                 if ( $form_data[$indexes[0]]['number'] == $indexes[0] ) {
+
                     $temp = array_splice($form_data, $indexes[0], 1, $temp);
                     $temp[0]['number'] = $indexes[1];
+
                 }
                 if ( ! empty($temp) ) {
                     array_splice($form_data, $indexes[1], 0, $temp);
@@ -248,7 +258,7 @@ class FormzuListTable extends WP_List_Table
             $search = $_REQUEST['s'];
             $search = trim($search);
             $output = array();
-            $len = count($data);
+            $len    = count($data);
 
             for ($i = 0; $i < $len; $i++) {
                 if (strpos($data[$i]['name'], $search) !== false) {
@@ -263,21 +273,21 @@ class FormzuListTable extends WP_List_Table
         //ソートに使う関数
         function usort_reorder($a, $b) {
             $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'number';
-            $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'asc';
-            $result = strcmp($a[$orderby], $b[$orderby]);
+            $order   = (!empty($_REQUEST['order']))   ? $_REQUEST['order']   : 'asc';
+            $result  = strcmp($a[$orderby], $b[$orderby]);
             return ($order === 'asc') ? -$result : $result;
         }
 
         usort($data, 'usort_reorder');
 
         $current_page = $this->get_pagenum();
-        $total_items = count($data);
-        $data = array_slice($data, (($current_page - 1) * $per_page), $per_page);
+        $total_items  = count($data);
+        $data         = array_slice($data, (($current_page - 1) * $per_page), $per_page);
 
-        $this->items = $data;
+        $this->items  = $data;
         $this->set_pagination_args( array(
             'total_items' => $total_items,
-            'per_page' => $per_page,
+            'per_page'    => $per_page,
             'total_pages' => ceil($total_items / $per_page)
         ) );
     }

@@ -1,5 +1,8 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
 
 function set_formzu_html_widgets() {
     $widgets = FormzuOptionHandler::get_option('formzu_widgets');
@@ -12,9 +15,9 @@ function set_formzu_html_widgets() {
             continue;
         }
 
-        $widget_id = $widgets[$i]['widget_id'];
+        $widget_id   = $widgets[$i]['widget_id'];
         $widget_name = $widgets[$i]['name'];
-        $params = array(
+        $params      = array(
             'name'          => $widget_name,
             'id'            => $widgets[$i]['id'],
             'widget_id'     => $widget_id,
@@ -53,7 +56,6 @@ function set_formzu_html_widgets() {
             $widget_name,
             function($args, $params) {
                 $html = $params['html'];
-
                 $echo_params = array(
                     'before_widget',
                     'widget_html',
@@ -63,6 +65,7 @@ function set_formzu_html_widgets() {
                     'content_html',
                     'after_widget',
                 );
+
                 foreach ($echo_params as $param) {
                     if ( strpos($html[$param], 'script') || strpos($html[$param], 'iframe') ) {
                         echo echo_html(do_shortcode($html[$param]));
@@ -80,7 +83,7 @@ function set_formzu_html_widgets() {
             $widget_id,
             $widget_name,
             function() use ($widget_id) {
-                if (isset($_POST['submitted']) ) {
+                if (isset($_POST['submitted'])) {
                     $widget_html = array(
                         'before_widget' => str_replace('\\', '', $_POST['before_widget']),
                         'widget_html'   => str_replace('\\', '', $_POST['widget_html']),

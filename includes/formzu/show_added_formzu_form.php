@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function show_added_formzu_form() {
     if ( ! FormzuParamHelper::isset_key($_REQUEST, array('action', 'number')) ) {
         return false;
@@ -16,7 +20,7 @@ function show_added_formzu_form() {
     (function($){
         //新しく追加されたフォームの場所をアニメーションで示す
         $(document).ready(function(){
-            var $listbox = $('#formzu-list-box');
+            var $listbox  = $('#formzu-list-box');
             var is_closed = $listbox.hasClass('closed');
 
             if (is_closed) {

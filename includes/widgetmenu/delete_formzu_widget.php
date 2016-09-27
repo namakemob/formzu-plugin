@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function delete_formzu_widget() {
     if ( ! FormzuParamHelper::isset_key($_REQUEST, array('widget_id', 'action')) ) {
         return false;
@@ -14,3 +18,4 @@ function delete_formzu_widget() {
     wp_safe_redirect( admin_url('widgets.php') );
     exit;
 }
+

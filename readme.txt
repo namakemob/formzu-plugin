@@ -1,4 +1,4 @@
-=== Formzu Plugin ===
+=== Formzu WP ===
 Contributors: hirokioyamada
 Donate link: 
 Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, ÉtÉHÅ[ÉÄ

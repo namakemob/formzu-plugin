@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 class FormzuNavMenuItemFields
 {
     private function __construct()
@@ -60,11 +64,17 @@ class FormzuNavMenuItemFields
             return;
         }
 
-        if ( isset($_POST['menu-item-url'][$post_id]) && $_POST['menu-item-object'][$post_id] == 'post_type_formzu_link' ) {
+        $url = $_POST['menu-item-url'][$post_id];
 
-            $value = stripslashes($_POST['menu-item-url'][$post_id]);
+        if (strlen(strval($url)) > 10) {
+            return;
+        }
 
-            update_post_meta($post_id, '_menu_item_url',    $value);
+        if ( isset($_POST['menu-item-object'][$post_id]) && $_POST['menu-item-object'][$post_id] == 'post_type_formzu_link' ) {
+
+            $url = stripslashes($url);
+
+            update_post_meta($post_id, '_menu_item_url',    $url);
             update_post_meta($post_id, '_menu_item_type',   'formzu_link');
             update_post_meta($post_id, '_menu_item_object', 'post_type_formzu_link');           
         }

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PHP') ) {
+    die();
+}
+
 function delete_formzu_form_data() {
     if ( ! FormzuParamHelper::isset_key($_REQUEST, array('action', 'delete_nonce', 'id', 'number')) ) {
         return false;

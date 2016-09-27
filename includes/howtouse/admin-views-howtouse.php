@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function echo_how_to_use_formzu() {
 ?>
     <div class="wrap">

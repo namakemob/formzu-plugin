@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function formzu_enqueue_js() {
     wp_enqueue_script(
         'form_id_submit_button',

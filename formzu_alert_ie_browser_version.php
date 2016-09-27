@@ -1,7 +1,7 @@
 <?php
 
 
-function alert_ie_browser_version() {
+function formzu_alert_ie_browser_version() {
     ?>
     <script>
         var user_agent = window.navigator.userAgent.toLowerCase();

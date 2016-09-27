@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function setup_formzu_link_navmenu( $item ) {
     if ( isset($item->object) ) {
         if ( $item->object == 'post_type_formzu_link' ) {

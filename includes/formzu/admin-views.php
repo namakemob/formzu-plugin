@@ -1,8 +1,12 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function echo_formzu_admin_page() {
     $screen = get_current_screen();
-    $page = $screen->id;
+    $page   = $screen->id;
 
     wp_enqueue_script('common');
     wp_enqueue_script('wp-lists');

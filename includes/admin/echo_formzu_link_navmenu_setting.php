@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function echo_formzu_link_navmenu_setting() {
     if ( ! check_ajax_referer(FORMZU_NAVMENU_NONCE, 'security', FALSE) ) {
         die('security error');
@@ -8,7 +12,18 @@ function echo_formzu_link_navmenu_setting() {
         die('parameter error');
     }
 
-    $id = $_POST['id'];
+    $id = strval($_POST['id']);
+
+    if (strlen($id) > 10) {
+        $id = substr($id, 0, 10);
+    }
+
+    $id_nums = substr($id, 1);
+
+    if ( ! ctype_digit($id_nums)) {
+        die('sanitize error');
+    }
+
     $found_form = FormzuOptionHandler::find_option('form_data', array('id' => $id));
 
     if ( ! $found_form ) {
@@ -27,7 +42,7 @@ function echo_formzu_link_navmenu_setting() {
 
     $menu_obj->label      = $menu_obj->title;
     $menu_obj->type_label = 'フォームズ フォームリンク';
-    $menu_obj->url = FORMZU_FORM_URL . $found_form['item']['id'] . '/';
+    $menu_obj->url        = FORMZU_FORM_URL . $found_form['item']['id'] . '/';
     $menu_obj->type       = 'formzu_link';
     $menu_obj->object     = 'post_type_formzu_link';
 
@@ -66,8 +81,6 @@ function set_navmenu_hidden_input() {
             $(document).ready(function(){
                 var formzu_link_items= <?php echo json_encode($formzu_link_items, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 
-                console.log(formzu_link_items);
-
                 if (!formzu_link_items || !formzu_link_items instanceof Array) {
                     alert('return false');
                     return false;
@@ -81,7 +94,7 @@ function set_navmenu_hidden_input() {
                         continue;
                     }
 
-                    var item_id = formzu_link_items[i].item_id;
+                    var item_id  = formzu_link_items[i].item_id;
                     var form_url = formzu_link_items[i].form_url;
 
                     if ( item_id === '' || form_url === '') {
@@ -91,10 +104,10 @@ function set_navmenu_hidden_input() {
                     $settings_elem = $('#menu-item-settings-' + item_id);
 
                     $hidden_url = $('<input>').attr({
-                        'type':  'hidden',
-                        'id':    'edit-menu-item-url-' + item_id,
+                        'type' : 'hidden',
+                        'id'   : 'edit-menu-item-url-' + item_id,
                         'class': 'widefat code edit-menu-item-url',
-                        'name':  'menu-item-url[' + item_id + ']',
+                        'name' : 'menu-item-url[' + item_id + ']',
                         'value': form_url
                     });
                     $settings_elem.append($hidden_url);
@@ -119,7 +132,7 @@ function get_formzu_link_items() {
                 continue;
             }
 
-            $item_id = get_post_meta($menu_item->ID, '_menu_item_object_id', true); 
+            $item_id  = get_post_meta($menu_item->ID, '_menu_item_object_id', true); 
             $form_url = $menu_item->url;
 
             if ( empty($item_id) || empty($form_url) ) {
@@ -127,7 +140,7 @@ function get_formzu_link_items() {
             }
 
             $formzu_link_items[] = array(
-                'item_id' => $item_id,
+                'item_id'  => $item_id,
                 'form_url' => $form_url,
             );
             
@@ -145,7 +158,7 @@ function add_new_formzu_link_item($formzu_link_items) {
         return $formzu_link_items;
     }
 
-    $item_id = FormzuOptionHandler::get_option('new_navmenu_item_id');
+    $item_id  = FormzuOptionHandler::get_option('new_navmenu_item_id');
     $form_url = FormzuOptionHandler::get_option('new_navmenu_form_url');
 
     if ( empty($item_id) || empty($form_url) ) {
@@ -153,7 +166,7 @@ function add_new_formzu_link_item($formzu_link_items) {
     }
 
     $formzu_link_items[] = array(
-        'item_id' => $item_id,
+        'item_id'  => $item_id,
         'form_url' => $form_url,
     );
 

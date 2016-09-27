@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function add_formzu_plugin_css() {
 ?>
     <?php add_thickbox(); ?>

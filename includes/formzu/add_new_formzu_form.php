@@ -1,7 +1,10 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function add_new_formzu_form() {
-    //新しいフォームを登録
     if ( ! FormzuParamHelper::check_referer('formzu-new-form-save', 'add-new-form') ) {
         return false;
     }
@@ -13,16 +16,14 @@ function add_new_formzu_form() {
         set_transient( 'formzu-admin-errors', $message, 3 );
     }
 
-    $form_id = FormzuParamHelper::get_POS('hidden_id', $form_id);
-    $form_height = FormzuParamHelper::get_POS('hidden_height', 600);
+    $form_id            = FormzuParamHelper::get_POS('hidden_id', $form_id);
+    $form_height        = FormzuParamHelper::get_POS('hidden_height', 600);
     $form_mobile_height = FormzuParamHelper::get_POS('hidden_mobile_height', 700);
-    $form_data = FormzuOptionHandler::get_option('form_data', array());
-    $form_name = FormzuParamHelper::get_POS('hidden_title', 'Noname');
-    $form_items = FormzuParamHelper::get_POS('hidden_items', 'Noitems');
-    $form_number = count($form_data);
+    $form_data          = FormzuOptionHandler::get_option('form_data', array());
+    $form_name          = FormzuParamHelper::get_POS('hidden_title', 'Noname');
+    $form_items         = FormzuParamHelper::get_POS('hidden_items', 'Noitems');
+    $form_number        = count($form_data);
 
-    //TODO: wordpressのキャッシュを使ってフォームを表示させてみる（キャッシュの更新はどうする？）
-    //同じＩＤがあれば上書き
     for ($i = 0; $i < $form_number; $i++) {
         if ( isset($form_data[$i]['id']) && $form_data[$i]['id'] == $form_id ) {
 

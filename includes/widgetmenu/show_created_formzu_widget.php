@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function show_created_formzu_widget() {
     if ( ! FormzuParamHelper::isset_key($_REQUEST, array('action', 'id')) ) {
         return false;

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 class Formzu_Plugin_Tour
 {
     const POINTER_CLOSE_ID = 'formzu_close_tour';

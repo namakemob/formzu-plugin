@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function create_formzu_widget(){
     $widgets = FormzuOptionHandler::get_option('formzu_widgets', array());
 

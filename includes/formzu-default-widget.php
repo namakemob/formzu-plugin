@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined('FORMZU_PLUGIN_PATH') ) {
+    die();
+}
+
 function register_formzu_default_widgets() {
     register_widget('FormzuDefaultWidget');
 }
