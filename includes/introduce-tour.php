@@ -107,7 +107,8 @@ class Formzu_Plugin_Tour
             'edge'  => 'left',
             'align' => 'center'
         );
-        $admin_location = 'window.location="' . admin_url('plugins.php');
+        $plugins_location = 'window.location="' . admin_url('plugins.php');
+        $admin_location = 'window.location="' . admin_url('admin.php');
         $adminpages = array(
             'formzu-admin' => array(
                 array(
@@ -119,7 +120,7 @@ class Formzu_Plugin_Tour
                     'button2'   => __('次へ', 'formzu-admin'),
                     'button3'   => __('前へ', 'formzu-admin'),
                     'function2' => $admin_location . '?page=formzu-admin&tour_counter=1";',
-                    'function3' => $admin_location . '";',
+                    'function3' => $plugins_location . '";',
                 ),
                 array(
                     'content'   => $h3 . '<p>' . __('「2 フォームズで作成したフォームIDを入力してください」をクリックしてください。', 'formzu-admin') . '</p>'
@@ -151,24 +152,12 @@ class Formzu_Plugin_Tour
                     'button2'   => __('使い方を読む', 'formzu-admin'),
                     'function2' => $admin_location . '?page=how-to-use";',
                 ),
-                //array(
-                //    'content' => $h3 . '<p>' . __('不安な方は「手順がわからないという方へ」をクリックしてください。', 'formzu-admin') . '</p>'
-                //        . '<p>' . __('フォーム作成 -> 保存 -> 追加 -> 設置までの手順が表示されます。', 'formzu-admin') . '</p>',
-                //    'id' => 'formzu-step-box',
-                //    'position' => array(
-                //        'edge' => 'left',
-                //        'align' => 'center'
-                //    ),
-                //    'button2' => __('次へ', 'formzu-admin'),
-                //    'button3' => __('前へ', 'formzu-admin'),
-                //    'function2' => 'window.location="' . admin_url('admin.php') . '?page=how-to-use";',
-                //    'function3' => 'window.location="' . admin_url('admin.php') . '?page=formzu-admin&tour_counter=2";',
-                //),
             ),
             'how-to-use' => array(
                 array(
                     'content'   => $h3 . '<p>' . __('この画面は当プラグインの使い方の説明画面です。', 'formzu-admin') . '</p>'
-                                . '<p>' . __('基本的な使い方に加え、フォームを設置する方法について書かれています。', 'formzu-admin') . '</p>',
+                                . '<p>' . __('基本的な使い方に加え、フォームを設置する方法について書かれています。', 'formzu-admin') . '</p>'
+                                . '<p>' . __('手順通りできない場合はこちらを確認してみてください。', 'formzu-admin') . '</p>',
                     'id'        => 'post-body',
                     'position'  => $left_center,
                     'button2'   => __('次へ', 'formzu-admin'),
