@@ -165,7 +165,7 @@ class FormzuActionHooks
             }
         }
 
-        $active_widgets = get_option( 'sidebars_widgets' );
+        $active_widgets = get_option('sidebars_widgets');
 
         foreach ($active_widgets as $active_key => $active_space) {
             for ($i = 0, $len = count($active_space); $i < $len; $i++) {
