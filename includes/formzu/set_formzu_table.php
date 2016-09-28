@@ -41,7 +41,9 @@ class FormzuListTable extends WP_List_Table
     function column_name($item)
     {
         $actions = array(
-            'login' => sprintf('<a href="https://ws.formzu.net/login_form.php?id=%s" target="_blank"><i class="fa fa-wrench" aria-hidden="true"></i>編集</a>',
+            'login' => sprintf('<a href="#" class="%s" data-form-id="%s" data-url="https://ws.formzu.net/login_form.php?id=%s"><i class="fa fa-wrench" aria-hidden="true"></i>編集</a>',
+                'formzu-login-button',
+                $item['id'],
                 $item['id']
             ),
             'reload' => sprintf('<a href="%s?page=%s&action=%s&name=%s&id=%s" class="%s" data-form-id="%s"><i class="fa fa-refresh" aria-hidden="true"></i>更新</a>',

@@ -20,6 +20,7 @@ function formzu_enqueue_js() {
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nonce'   => wp_create_nonce('get_iframe_height'),
             'action'  => 'get_iframe_height',
+            'email'   => get_option('admin_email'),
         )
     );
 }
