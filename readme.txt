@@ -1,7 +1,7 @@
 === Formzu WP ===
 Contributors: hirokioyamada
 Donate link: 
-Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, フォーム
+Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, フォーム, フォームズ
 Requires at least: 4.6
 Tested up to: 4.6.1
 Stable tag: 1.0.0
