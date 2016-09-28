@@ -36,11 +36,11 @@ function formzu_delete_target_widget() {
         return $widgets;
     }
     
-    $active_widgets = get_option( 'sidebars_widgets' );
+    $active_widgets = get_option('sidebars_widgets');
 
     foreach ($active_widgets as $active_key => $active_space) {
         for ($i = 0, $len = count($active_space); $i < $len; $i++) {
-            if ( $active_space[$i] == $widget_id ) {
+            if ($active_space[$i] == $widget_id) {
 
                 unset($active_widgets[$active_key][$i]);
                 $active_widgets[$active_key] = array_values($active_widgets[$active_key]);
@@ -50,7 +50,7 @@ function formzu_delete_target_widget() {
         }
     }
 
-    update_option( 'sidebars_widgets', $active_widgets );
+    update_option('sidebars_widgets', $active_widgets);
     return $widgets;
 }
 

@@ -140,7 +140,7 @@ class FormzuActionHooks
         add_action('admin_enqueue_scripts', array('Formzu_Plugin_Tour', 'get_instance'));
 
         require_once FORMZU_PLUGIN_PATH . '/formzu_alert_ie_browser_version.php';
-        formzu_alert_ie_browser_version();
+        add_action('admin_enqueue_scripts', 'formzu_alert_ie_browser_version');
 
         $key   = 'closedpostboxes_toplevel_page_formzu-admin';
         $value = array('formzu-create-box', 'formzu-add-box', 'formzu-list-box');
@@ -164,6 +164,20 @@ class FormzuActionHooks
                 delete_option($key);
             }
         }
+
+        $active_widgets = get_option( 'sidebars_widgets' );
+
+        foreach ($active_widgets as $active_key => $active_space) {
+            for ($i = 0, $len = count($active_space); $i < $len; $i++) {
+                if (strpos($active_space[$i], 'formzu') !== false) {
+
+                    unset($active_widgets[$active_key][$i]);
+                    $active_widgets[$active_key] = array_values($active_widgets[$active_key]);
+
+                }
+            }
+        }
+        update_option('sidebars_widgets', $active_widgets);
 
         $page = 'toplevel_page_formzu-admin';
 
