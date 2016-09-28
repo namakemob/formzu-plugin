@@ -6,15 +6,15 @@ if ( ! defined('FORMZU_PLUGIN_PATH') ) {
 
 function formzu_enqueue_js() {
     wp_enqueue_script(
-        'form_id_submit_button',
-        plugins_url() . '/formzu-plugin/js/form_id_submit_button.js',
+        'formzu_button_actions.js',
+        plugins_url() . '/formzu-plugin/js/formzu_button_actions.js.js',
         array( 'jquery' ),
-        filemtime( FORMZU_PLUGIN_PATH . '/js/form_id_submit_button.js' ),
+        filemtime( FORMZU_PLUGIN_PATH . '/js/formzu_button_actions.js.js' ),
         true
     );
 
     wp_localize_script(
-        'form_id_submit_button',
+        'formzu_button_actions.js',
         'formzu_ajax_obj',
         array(
             'ajaxurl' => admin_url('admin-ajax.php'),

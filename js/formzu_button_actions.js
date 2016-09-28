@@ -291,10 +291,6 @@
             var form_id;
             var from_str;
 
-            console.log(this);
-            console.log($(this).prop('tagName'));
-            console.log(reload_form_id);
-
             if (typeof reload_form_id == 'string') {
                 form_id = reload_form_id;
             } else {
@@ -306,8 +302,6 @@
                 alert("フォームID : " + form_id + "\n無効な値が入力されました。正確な値を入力してください。");
                 return false;
             }
-
-            console.log(form_id);
 
             var $this = $(this);
 

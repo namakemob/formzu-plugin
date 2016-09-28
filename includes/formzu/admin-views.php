@@ -104,7 +104,6 @@ function echo_create_formzu_form_body() {
 
             <div id="open-formzu-page-button" class="large-button" style="margin: 0 0 20px 0;">別タブでフォームズを表示する</div>
             <div id="goto-formzu-page-button" class="large-button">同じ画面でフォームズを表示する</div>
-            <?php //formzu_page_button_actions(); ?>
 
         </div>
     </div>
