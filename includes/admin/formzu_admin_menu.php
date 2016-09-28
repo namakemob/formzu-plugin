@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined('FORMZU_PLUGIN_PATH') ) {
-    die('');
+    die();
 }
 
 function formzu_admin_menu() {
