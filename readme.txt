@@ -29,8 +29,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Installation ==
 
-1. formzu-pluginフォルダを/wp-content/plugins/ディレクトリにアップロードしてください。
-2. 「プラグイン」メニューの「Formzu Plugin」を有効化してください。
+1. formzu-wpフォルダを/wp-content/plugins/ディレクトリにアップロードしてください。
+2. 「プラグイン」メニューの「Formzu WP」を有効化してください。
 
 == Frequently asked questions ==
 
