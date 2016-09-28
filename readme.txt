@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-`フォームズ`は、メールフォームのレンタルサービスを提供しています。問合せの受付やアンケートの募集等、いろいろなフォームを作ることができます。
+フォームズは、メールフォームのレンタルサービスを提供しています。問合せの受付やアンケートの募集等、いろいろなフォームを作ることができます。
 メールフォームに必要な機能をほとんど装備している点と、初めての人でも、すぐに使えるように操作画面を分かりやすくしているのが特長です。
 
 このプラグインをインストールすることで、フォームズのフォームをWordPress管理画面上から簡単に設置できます。
@@ -38,15 +38,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 2. 「プラグイン」メニューの「Formzu WP」を有効化してください。
 
 == Frequently asked questions ==
-
+-
 
 
 == Screenshots ==
-
+-
 
 
 == Changelog ==
-
+-
 
 
 == Upgrade notice ==
+-
