@@ -96,7 +96,7 @@ class FormzuParamHelper
     }
 
 
-    public static function is_admin_page_of( $page = 'formzu-admin')
+    public static function is_admin_page_of( $page = 'formzu-admin' )
     {
         global $pagenow;
 
@@ -106,7 +106,7 @@ class FormzuParamHelper
 
         $page_val = sanitize_title($_GET['page']);
 
-        if ( $page_val !== $page ) {
+        if ($page_val !== $page) {
             return false;
         }
         if ( ! is_admin() ) {
