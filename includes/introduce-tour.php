@@ -157,7 +157,7 @@ class Formzu_Plugin_Tour
                 array(
                     'content'   => $h3 . '<p>' . __('この画面は当プラグインの使い方の説明画面です。', 'formzu-admin') . '</p>'
                                 . '<p>' . __('基本的な使い方に加え、フォームを設置する方法について書かれています。', 'formzu-admin') . '</p>'
-                                . '<p>' . __('手順通りできない場合はこちらを確認してみてください。', 'formzu-admin') . '</p>',
+                                . '<p>' . __('手順がわからない場合はこちらを確認してみてください。', 'formzu-admin') . '</p>',
                     'id'        => 'post-body',
                     'position'  => $left_center,
                     'button2'   => __('次へ', 'formzu-admin'),
