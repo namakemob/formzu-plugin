@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Formzu WP
-Plugin URI: 
+Plugin URI: https://wordpress.org/plugins/formzu-wp/
 Description: Formzu WP 
 Version: 1.0.0
 Author: hirokioyamada
