@@ -16,7 +16,7 @@ function echo_how_to_use_formzu() {
                     <div class="postbox categorydiv">
                         <h3 class="hndle"><span><?php _e( '使い方', 'formzu-admin' ); ?></span></h3>
                         <div class="inside" style="margin: 0;">
-                            <div id="contextual-help-back"></div><!-- style="background: transparent;" -->
+                            <div id="contextual-help-back"></div>
                             <div id="contextual-help-columns">
 
 
@@ -73,28 +73,28 @@ function echo_how_to_use_formzu() {
                                         <?php echo_how_to_create_formzu_form(); ?>
                                     </div>
 
-                                    <div id="help-tab2" class="metabox-holder tabs-panel help-tab-content"><!-- style="display: block;" -->
+                                    <div id="help-tab2" class="metabox-holder tabs-panel help-tab-content">
                                         <div class="inside inside-left">
                                             <h1>設置方法１：固定ページ</h1>
                                         </div>
                                         <?php echo_how_to_create_formzu_page(); ?>
                                     </div>
 
-                                    <div id="help-tab3" class="metabox-holder tabs-panel help-tab-content"><!-- style="display: block;" -->
+                                    <div id="help-tab3" class="metabox-holder tabs-panel help-tab-content">
                                         <div class="inside inside-left">
                                             <h1>設置方法２：メニュー</h1>
                                         </div>
                                         <?php echo_how_to_create_formzu_menu(); ?>
                                     </div>
 
-                                    <div id="help-tab4" class="metabox-holder tabs-panel help-tab-content"><!-- style="display: block;" -->
+                                    <div id="help-tab4" class="metabox-holder tabs-panel help-tab-content">
                                         <div class="inside inside-left">
                                             <h1>設置方法３：ウィジェット</h1>
                                         </div>
                                         <?php echo_how_to_create_formzu_widget(); ?>
                                     </div>
 
-                                    <div id="help-tab5" class="metabox-holder tabs-panel help-tab-content"><!-- style="display: block;" -->
+                                    <div id="help-tab5" class="metabox-holder tabs-panel help-tab-content">
                                         <div class="inside inside-left">
                                             <h1>設置方法４：ショートコード</h1>
                                         </div>
@@ -102,14 +102,14 @@ function echo_how_to_use_formzu() {
 
                                     </div>
 
-                                    <div id="help-tab6" class="metabox-holder tabs-panel help-tab-content"><!-- style="display: block;" -->
+                                    <div id="help-tab6" class="metabox-holder tabs-panel help-tab-content">
                                         <div class="inside inside-left">
                                             <h1>設置方法５：テンプレート</h1>
                                         </div>
                                         <?php echo_how_to_use_formzu_template(); ?>
                                     </div>
 
-                                    <div id="help-tab7" class="metabox-holder tabs-panel help-tab-content"><!-- style="display: block;" -->
+                                    <div id="help-tab7" class="metabox-holder tabs-panel help-tab-content">
                                         <div class="inside inside-left">
                                             <h1>設定</h1>
                                         </div>
@@ -220,12 +220,11 @@ function echo_how_to_create_formzu_form() {
     <div class="postbox">
         <div class="inside">
             <p>フォームズのフォームの編集ページにて、フォーム項目を変更した際には<strong>「更新」</strong>を行ってください。</p>
-            <p>更新は、フォーム一覧に表示されている各フォームごとに行います。<strong></strong></p>
+            <p>（当プラグインのフォーム一覧リストから「編集」をクリックして編集すると、更新する手間が省けます。）</p>
+            <p>更新は、フォーム一覧に表示されている各フォームごとに行います。</p>
             <p>フォーム一覧にて、各フォームにマウスカーソルを乗せると「編集」「更新」「削除」と表示されます。ここで「更新」が行えます。</p>
             <p>更新することでWordPress側のフォームに関するデータを変更できます。</p>
             <p>更新によって埋め込まれたフォームの高さを自動で再調整し、余計なスクロールバーが表示されてしまうのを防ぎます。</p>
-            <p></p>
-            <p></p>
         </div>
     </div>
 <?php
@@ -249,6 +248,7 @@ function echo_how_to_create_formzu_page() {
             <p>固定ページのリンクのさせ方がわからないという方は、現在ご覧になっている「使い方」画面の<strong>「メニュー」</strong>項目を試してみてください。</p>
             <p>固定ページ内に書かれているショートコードの設定については、現在ご覧になっている「使い方」画面の<strong>「設定」</strong>項目を参照してください。</p>
             <p><strong>注意</strong>：フォームズのフォーム編集ページにてフォーム項目を変更した際には、WordPress側でフォームデータの<strong>「更新」</strong>を併せて行ってください。</p>
+            <p>（当プラグインのフォーム一覧リストから「編集」をクリックして編集すると、更新する手間が省けます。）</p>
             <p>「更新」によって埋め込まれたフォームの高さを自動で再調整し、余計なスクロールバーが表示されてしまうのを防ぎます。</p>
         </div>
     </div>
