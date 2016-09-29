@@ -19,18 +19,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 **詳しい使い方**
-
 プラグインをインストールした後、管理画面の左側メインメニューバー内「フォームズ」項目直下の「使い方」をご覧ください。
 
 **機能**
-
 ・フォームを埋め込んだ固定ページ作成機能
 ・フォームへのナビゲーションメニュー作成機能
 ・フォームへのリンク付きウィジェット作成機能
 ・詳細設定が可能なショートコード生成機能
 
 **フォームズ** : 
-http://www.formzu.com/(http://www.formzu.com/)
+http://www.formzu.com/
 
 
 == Installation ==
@@ -38,6 +36,8 @@ http://www.formzu.com/(http://www.formzu.com/)
 1. WordPress管理画面のメニュー「プラグイン -> 新規追加」をクリック
 2. 検索窓で「Formzu WP」と検索して「今すぐインストール」ボタンをクリック
 3. ボタンが「有効化」に変化した後、もう一度クリック
+
+または、
 
 1. formzu-wpフォルダを/wp-content/plugins/ディレクトリにアップロードしてください。
 2. 「プラグイン」メニューの「Formzu WP」を有効化してください。
