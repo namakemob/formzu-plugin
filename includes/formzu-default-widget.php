@@ -38,7 +38,6 @@ class FormzuDefaultWidget extends WP_Widget
     {
         if ( FormzuParamHelper::isset_key($par, 'form_widget_data') ) {
             //$form_id = explode(' ', $par['form_widget_data'])[0];
-            //list($form_id, $h, $m) = explode(' ', $par['form_widget_data']);
             $form_id_height = explode(' ', $par['form_widget_data']);
             $form_id = $form_id_height[0];
         }
