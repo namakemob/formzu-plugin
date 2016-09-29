@@ -50,7 +50,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Screenshots ==
--
+1. トップメニュー
+2. フォーム一覧操作
+3. ナビゲーションメニュー
+4. ウィジェット
 
 
 == Changelog ==
