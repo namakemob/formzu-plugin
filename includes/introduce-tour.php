@@ -196,7 +196,8 @@ class Formzu_Plugin_Tour
             $page = $screen->id;
         }
         //条件：現在開いているページがプラグイン一覧だったら
-        if( strpos(admin_url('plugins.php'), explode('?', add_query_arg(array()))[0] ) !== false ) {
+        $url_and_param = explode('?', add_query_arg(array()));
+        if( strpos(admin_url('plugins.php'), $url_and_param[0] ) !== false ) {
             $page = 'plugin_page';
         }
         //同じページで複数の案内を表示させるためのカウンター
