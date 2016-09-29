@@ -25,9 +25,9 @@ function echo_formzu_admin_page() {
                         <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
                         <?php wp_nonce_field('meta-box-order',  'meta-box-order-nonce', false); ?>
 
-                        <?php add_meta_box('formzu-create-box', '<span class="box-icon">1<i class="fa fa-external-link" aria-hidden="true"></i></span>' . __(' フォームズへ移動して新しくフォームを作成します（別ページ）', 'formzu-admin'), 'echo_create_formzu_form_body', $page); ?>
-                        <?php add_meta_box('formzu-add-box',    '<span class="box-icon">2<i class="fa fa-plus" aria-hidden="true"></i></span>' . __(' フォームズで作成したフォームIDを入力してください', 'formzu-admin'), 'echo_add_formzu_form_body', $page); ?>
-                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span>' . __(' フォーム一覧', 'formzu-admin'), 'echo_formzu_list_body', $page); ?>
+                        <?php add_meta_box('formzu-create-box', '<span class="box-icon">1<i class="fa fa-external-link" aria-hidden="true"></i></span><span class="box-label">' . __(' フォームズへ移動して新しくフォームを作成します（別ページ）', 'formzu-admin') . '</span>', 'echo_create_formzu_form_body', $page); ?>
+                        <?php add_meta_box('formzu-add-box',    '<span class="box-icon">2<i class="fa fa-plus" aria-hidden="true"></i></span><span class="box-label">' . __(' フォームズで作成したフォームIDを入力してください', 'formzu-admin') . '</span>', 'echo_add_formzu_form_body', $page); ?>
+                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span><span class="box-label">' . __(' フォーム一覧', 'formzu-admin') . '</span>', 'echo_formzu_list_body', $page); ?>
 
                         <?php do_meta_boxes($page, 'advanced', null); ?>
                 </div>

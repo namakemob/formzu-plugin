@@ -2,6 +2,12 @@
     undefined;
     $(function(){
 
+        $('.ui-sortable-handle').hover(function(){
+            $(this).find('.box-label').css('text-decoration', 'underline');
+        }, function(){
+            $(this).find('.box-label').css('text-decoration', 'none');
+        });
+
         var email = formzu_ajax_obj.email;
 
         $('#open-formzu-page-button').on('click', function(){
@@ -114,7 +120,7 @@
                 }, 'slow', 'swing', function(){
                     $container.addClass('hide');
                     if (reload_form_id) {
-                        alert('フォーム情報を更新します。少々お待ちください。');
+                        alert('フォーム情報を更新します。');
                         getReloadFormId(reload_form_id);
                     }
                 });
@@ -158,8 +164,9 @@
             $container.append($clear);
             $('#wpbody-content').append($container);
 
-            if (reload_form_id) {
-                alert('フォーム保存後、画面上部の「元の画面へ戻る」ボタンを押すと自動的に「更新」できます。\nボタンを押した後、更新終了まで少々お待ちください。');
+            if (reload_form_id && !sessionStorage.getItem('hide_reload_alert')) {
+                alert('フォーム保存後、画面上部の「元の画面へ戻る」ボタンを押すと自動的に「更新」できます。\nボタンを押した後、更新が終了するまでお待ちください。');
+                sessionStorage.setItem('hide_reload_alert', 1);
             }
         }
 
