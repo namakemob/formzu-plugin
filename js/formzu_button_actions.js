@@ -10,17 +10,17 @@
 
         var email = formzu_ajax_obj.email;
 
-        $('#open-formzu-page-button').click(function(){
+        $('#open-formzu-page-button').on('click', function(){
             var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
             window.open(url);
         });
 
-        $('#goto-formzu-page-button').click(function(){
+        $('#goto-formzu-page-button').on('click', function(){
             var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
             openFormzuIframeWindow(url);
         });
 
-        $('.formzu-login-button').click(function(){
+        $('.formzu-login-button').on('click', function(){
             var url = $(this).attr('data-url');
             var reload_form_id = $(this).attr('data-form-id');
             openFormzuIframeWindow(url, reload_form_id);
@@ -113,7 +113,7 @@
                 });
             });
 
-            $close_button.click(function(){
+            $close_button.on('click', function(){
                 var window_width = $(window).width();
                 $container.animate({
                     'left': '+=' + window_width

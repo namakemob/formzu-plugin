@@ -8,12 +8,12 @@ function formzu_page_button_actions() {
 ?>
     <script>
         (function($){
-            $('#open-formzu-page-button').click(function(){
+            $('#open-formzu-page-button').on('click', function(){
                 var url = 'https://ws.formzu.net/new_form.php?dmail=<?php echo esc_attr( get_option( 'admin_email ') ); ?>';
                 window.open(url);
             });
 
-            $('#goto-formzu-page-button').click(function(){
+            $('#goto-formzu-page-button').on('click', function(){
 
                 var window_width  = $(window).width();
                 var window_height = $(window).height();
@@ -86,7 +86,7 @@ function formzu_page_button_actions() {
                     });
                 });
 
-                $close_button.click(function(){
+                $close_button.on('click', function(){
                     var window_width = $(window).width();
                     $container.animate({
                         'left': '+=' + window_width
