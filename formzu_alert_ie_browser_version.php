@@ -2,10 +2,11 @@
 
 
 function formzu_alert_ie_browser_version() {
+    global $is_IE;
     ?>
     <script>
-        var user_agent = window.navigator.userAgent.toLowerCase();
-        if (user_agent.indexOf('msie') != -1) {
+        var is_IE = <?php echo esc_js($is_IE); ?>;
+        if (is_IE) {
             var version = window.navigator.appVersion.toLowerCase();
             var ver = version.substr(version.indexOf('msie') + 5, 1);
             if (ver != 9 && ver != 1) {
