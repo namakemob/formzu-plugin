@@ -44,28 +44,28 @@ function echo_formzu_html_widgets() {
             );
             FormzuOptionHandler::update_option( $widget_id, $params['html'] );
         }
-        //wp_register_sidebar_widget( $widget_id, $widget_name, function($args, $params) {
+        wp_register_sidebar_widget( $widget_id, $widget_name, function($args, $params) {
 
-        //    $html = $params['html'];
-        //    $echo_params = array(
-        //        'before_widget',
-        //        'widget_html',
-        //        'before_title',
-        //        'title_html',
-        //        'after_title',
-        //        'content_html',
-        //        'after_widget',
-        //    );
+            $html = $params['html'];
+            $echo_params = array(
+                'before_widget',
+                'widget_html',
+                'before_title',
+                'title_html',
+                'after_title',
+                'content_html',
+                'after_widget',
+            );
 
-        //    foreach ($echo_params as $param) {
-        //        if ( strpos($html[$param], 'script') || strpos($html[$param], 'iframe') ) {
-        //            echo echo_html(do_shortcode($html[$param]));
-        //        }
-        //        else {
-        //            echo do_shortcode($html[$param]);
-        //        }
-        //    }
-        //}, array(), $params );
+            foreach ($echo_params as $param) {
+                if ( strpos($html[$param], 'script') || strpos($html[$param], 'iframe') ) {
+                    echo echo_html(do_shortcode($html[$param]));
+                }
+                else {
+                    echo do_shortcode($html[$param]);
+                }
+            }
+        }, array(), $params );
     }
 }
 
