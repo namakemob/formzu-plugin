@@ -38,9 +38,11 @@ function echo_formzu_admin_page() {
                 (function($){
                     $(document).ready(function($){
                         $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-                        postboxes.add_postbox_toggles('<?php echo $page; ?>');
+                        if (typeof postboxes !== 'undefined') {
+                            postboxes.add_postbox_toggles('<?php echo $page; ?>');
+                        }
 
-                        $('#formzu-add-box .hndle').on('click', function(e){
+                        $('#formzu-add-box .hndle').click(function(e){
                             if (!$(this).parent().hasClass('closed')) {
                                 $('#add-new-form-input').focus();
                             }
