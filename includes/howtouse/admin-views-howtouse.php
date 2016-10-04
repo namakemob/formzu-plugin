@@ -428,12 +428,12 @@ function echo_about_formzu_option() {
             <tr>
                 <td>height</td>
                 <td>表示するフォームの高さです。</td>
-                <td>"800"</td>
+                <td>"自動取得値 or 800"</td>
             </tr>
             <tr>
                 <td>mobile_height</td>
                 <td>モバイル（スマホ、タブレット等）で表示するフォームの高さです。</td>
-                <td>"900"</td>
+                <td>"自動取得値 or 900"</td>
             </tr>
             <tr>
                 <td>tagname</td>
