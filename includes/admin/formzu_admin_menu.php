@@ -11,23 +11,13 @@ function formzu_admin_menu() {
     );
     $load_slag_list = array();
 
-    global $wp_filter;
-
-    if ($wp_filter['version'] >= 3.8) {
-        $icon = 'dashicons-email-alt';
-    }
-    else {
-        $icon = '';
-    }
-
     add_menu_page(
         __('フォームズ1', 'formzu-admin'),
         __('フォームズ',  'formzu-admin'),
         'manage_options',
         $slag_list['formzu'],
         'echo_formzu_admin_page',
-        //'dashicons-email-alt',
-        $icon,
+        'dashicons-email-alt',
         '30'
     );
 
