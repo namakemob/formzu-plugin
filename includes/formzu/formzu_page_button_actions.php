@@ -7,6 +7,7 @@ if ( ! defined('FORMZU_PLUGIN_PATH') ) {
 function formzu_page_button_actions() {
 ?>
     <script>
+    //testtesttest
         (function($){
             $('#open-formzu-page-button').click(function(){
                 var url = 'https://ws.formzu.net/new_form.php?dmail=<?php echo esc_attr( get_option( 'admin_email ') ); ?>';
@@ -40,6 +41,8 @@ function formzu_page_button_actions() {
                 var $wpcontent = $('#wpcontent');
                 var $wpcontent_width = $wpcontent.width();
                 var $wpcontent_margin_left = $wpcontent.css('margin-left');
+                console.log($wpcontent_width);
+                console.log($wpcontent_margin_left);
                 var $container = $('<div id="formzu-iframe-container">').css({
                     'background-color': 'white',
                     'width'           : $wpcontent_width,
