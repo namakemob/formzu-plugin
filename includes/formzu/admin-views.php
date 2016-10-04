@@ -8,10 +8,6 @@ function echo_formzu_admin_page() {
     $screen = get_current_screen();
     $page   = $screen->id;
 
-    wp_enqueue_script('common');
-    wp_enqueue_script('wp-lists');
-    wp_enqueue_script('postbox');
-
     ?>
         <div class="wrap">
             <h2>フォーム管理（フォームズ）</h2>

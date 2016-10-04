@@ -13,6 +13,10 @@ function formzu_enqueue_js() {
         true
     );
 
+    wp_enqueue_script('common');
+    wp_enqueue_script('wp-lists');
+    wp_enqueue_script('postbox');
+
     wp_localize_script(
         'formzu_button_actions',
         'formzu_ajax_obj',

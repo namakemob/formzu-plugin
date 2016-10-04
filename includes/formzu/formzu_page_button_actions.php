@@ -37,11 +37,15 @@ function formzu_page_button_actions() {
                     return false;
                 }
 
+                var $wpcontent = $('#wpcontent');
+                var $wpcontent_width = $wpcontent.width();
+                var $wpcontent_margin_left = $wpcontent.css('margin-left');
                 var $container = $('<div id="formzu-iframe-container">').css({
                     'background-color': 'white',
-                    'width'           : '100%',
+                    'width'           : $wpcontent_width,
                     'height'          : window_height,
                     'position'        : 'absolute',
+                    'margin-left'     : $wpcontent_margin_left,
                     'top'             : '0',
                     'left'            : window_width,
                     'border'          : 'solid 1px #777'
