@@ -44,8 +44,13 @@ class FormzuNavMenuItemFields
 
             $field['value'] = get_post_meta($item->ID, self::get_menu_item_postmeta_key($field['name']), true);
 
+            $keys = array();
+
+            foreach (array_keys($fields) as $key) {
+                $keys[] = '{' . $key . '}';
+            }
             $new_fields .= str_replace(
-                array_map(function($key){ return '{' . $key . '}'; }, array_keys($field)),
+                $keys,
                 array_values(array_map('esc_attr', $field)),
                 self::$options['item']
             );
