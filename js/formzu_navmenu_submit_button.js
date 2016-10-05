@@ -37,7 +37,7 @@
             return false;
         }
 
-        $('#' + formzu_ajax_obj.submit_id).click(submitNavFormSelect);
+        $('#' + formzu_ajax_obj.submit_id).bind('click', submitNavFormSelect);
     });
 })(jQuery);
 

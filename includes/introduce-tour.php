@@ -276,18 +276,18 @@ class Formzu_Plugin_Tour
                     <?php if ( $button2 ) { ?>
                         $('#pointer-close').after('<a id="pointer-next" class="button-primary">' + '<?php echo $button2; ?>' + '</a>').css('margin-left', '5px');
                     <?php } ?>
-                    $('#pointer-next').click(function(){
+                    $('#pointer-next').bind('click', function(){
                         <?php echo $button2_function; ?>
                     });
 
                     <?php if ( $button3 ) { ?>
                         $('#pointer-close').after('<a id="pointer-previous" class="button-primary">' + '<?php echo $button3; ?>' + '</a>').css('margin-left', '5px');
                     <?php } ?>
-                    $('#pointer-previous').click(function(){
+                    $('#pointer-previous').bind('click', function(){
                         <?php echo $button3_function; ?>
                     });
 
-                    $('#pointer-close').click(function(){
+                    $('#pointer-close').bind('click', function(){
                         $.post(ajaxurl, {
                             pointer: '<?php echo self::POINTER_CLOSE_ID; ?>',
                             action: 'dismiss-wp-pointer'

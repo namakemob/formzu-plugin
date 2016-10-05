@@ -49,7 +49,7 @@ function show_created_formzu_widget() {
         var text = $elem.text();
 
         $elem.children(':first').html('<span class="new-item">NEW!</span>' + text);
-        $elem.on('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd', function(){
+        $elem.bind('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd', function(){
             $elem.removeClass('my-updated');
         });
     })(jQuery);

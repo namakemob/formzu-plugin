@@ -55,7 +55,7 @@ function echo_how_to_use_formzu() {
                                         <div class="formzu-help-link" onClick="javascript:window.open('http://ws.formzu.net/dist/S97257136/', 'mailform1', 'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollber=yes, width=600, height=550, top=50, left=50')">不具合報告</div>
                                         <script>
                                             (function($){
-                                                $('.formzu-help-link').click(function(){
+                                                $('.formzu-help-link').bind('click', function(){
                                                     window.open($(this).attr('href'));
                                                 });
                                             })(jQuery);

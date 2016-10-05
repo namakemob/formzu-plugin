@@ -38,7 +38,7 @@ function echo_formzu_admin_page() {
                             postboxes.add_postbox_toggles('<?php echo $page; ?>');
                         }
 
-                        $('#formzu-add-box .hndle').click(function(e){
+                        $('#formzu-add-box .hndle').bind('click', function(e){
                             if (!$(this).parent().hasClass('closed')) {
                                 $('#add-new-form-input').focus();
                             }
