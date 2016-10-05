@@ -63,13 +63,18 @@
                 }
             }
 
+            var $wpcontent = $('#wpcontent');
+            var $wpcontent_width = $wpcontent.width();
+            var $wpcontent_margin_left = formzu_ajax_obj.version < 3.8 ? $wpcontent.css('margin-left') : '0';
+
             var $container = $('<div id="formzu-iframe-container">').css({
                 'background-color': 'white',
-                'width'           : '100%',
+                'width'           : $wpcontent_width,
                 'height'          : window_height,
                 'position'        : 'absolute',
                 'top'             : '0',
                 'left'            : window_width,
+                'margin-left'     : $wpcontent_margin_left,
                 'border'          : 'solid 1px #777'
             });
             $container.attr('data-url', url);
