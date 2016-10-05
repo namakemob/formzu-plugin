@@ -1,5 +1,24 @@
 (function($){
     undefined;
+
+    if (!$.parseHTML || typeof $.parseHTML !== 'function') {
+        function parseHTML(string){
+            var tmp_html = document.implementation.createHTMLDocument();
+
+            tmp_html.body.innerHTML = string;
+
+            var nodes = tmp_html.body.children;
+            var html = [];
+
+            for (var i = 0, l = nodes.length; i < l; i++) {
+                if (nodes[i].tagName !== 'SCRIPT' && nodes[i].tagName !== 'STYLE') {
+                    html.push(nodes[i]);
+                }
+            }
+            return html;
+        }
+    }
+
     $(function(){
 
         $('.ui-sortable-handle').hover(function(){
@@ -10,17 +29,17 @@
 
         var email = formzu_ajax_obj.email;
 
-        $('#open-formzu-page-button').click(function(){
+        $('#open-formzu-page-button').bind('click', function(){
             var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
             window.open(url);
         });
 
-        $('#goto-formzu-page-button').click(function(){
+        $('#goto-formzu-page-button').bind('click', function(){
             var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
             openFormzuIframeWindow(url);
         });
 
-        $('.formzu-login-button').click(function(){
+        $('.formzu-login-button').bind('click', function(){
             var url = $(this).attr('data-url');
             var reload_form_id = $(this).attr('data-form-id');
             openFormzuIframeWindow(url, reload_form_id);
@@ -118,7 +137,7 @@
                 });
             });
 
-            $close_button.click(function(){
+            $close_button.bind('click', function(){
                 var window_width = $(window).width();
                 $container.animate({
                     'left': '+=' + window_width
@@ -297,7 +316,7 @@
         }
 
 
-        $('.formzu-reload-button').click(getReloadFormId);
+        $('.formzu-reload-button').bind('click', getReloadFormId);
 
         function getReloadFormId(reload_form_id){
             var form_id;
@@ -318,7 +337,7 @@
             var $this = $(this);
 
             if ($this.prop('tagName')) {
-                $this.off('click');
+                $this.unbind('click');
                 $this.after('<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i>フォーム情報取得中...</p>');
             } else {
                 $('.wrap').first().prepend('<div style="font-size: 2em;"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i>フォーム情報取得中...</div>');
@@ -335,13 +354,20 @@
                 },
                 timeout: 30000,
                 success: function(response, dataType){
-                    var html        = $.parseHTML(response[0]);
-                    var mobile_html = $.parseHTML(response[1]);
+                    if (!$.parseHTML || typeof $.parseHTML !== 'function') {
+                        var html =        parseHTML(response[0]);
+                        var mobile_html = parseHTML(response[1]);
+                        console.log(html);
+                        return false;
+                    } else {
+                        var html        = $.parseHTML(response[0]);
+                        var mobile_html = $.parseHTML(response[1]);
+                    }
 
                     if (!html || !mobile_html) {
                         alert("フォームID : " + form_id + "\nフォームが見つかりませんでした。");
                         $('.fa-refresh').parent().remove();
-                        $('.formzu-reload-button').click(getReloadFormId);
+                        $('.formzu-reload-button').bind('click', getReloadFormId);
                         return false;
                     }
                     submitFormData('reload-form-data', {
@@ -381,11 +407,11 @@
                 alert("フォームID : " + form_id + "\n無効な値が入力されました。正確な値を入力してください。");
                 return false;
             }
-            $('#add-new-form-submit').off('click');
+            $('#add-new-form-submit').unbind('click');
 
             var $input = $('#add-new-form-input');
 
-            $input.off('keypress');
+            $input.unbind('keypress');
             $input.keypress(function(e){
                 e.preventDefault();
                 return false;
@@ -402,21 +428,32 @@
                     "action": formzu_ajax_obj.action
                 },
                 success: function(response){
-                    var html        = $.parseHTML(response[0]);
-                    var mobile_html = $.parseHTML(response[1]);
+                    if (!$.parseHTML || typeof $.parseHTML !== 'function') {
+                        var html =        parseHTML(response[0]);
+                        var mobile_html = parseHTML(response[1]);
+                        //console.log(html);
+                        //return false;
+                    } else {
+                        var html        = $.parseHTML(response[0]);
+                        var mobile_html = $.parseHTML(response[1]);
+                    }
 
                     if (!html || !mobile_html) {
                         alert('フォームID : ' + form_id + '\nフォームが見つかりませんでした。');
                         $('.fa-refresh').parent().remove();
-                        $('#add-new-form-submit').click(getNewFormId);
+                        $('#add-new-form-submit').bind('click', getNewFormId);
 
                         var $input = $('#add-new-form-input');
 
-                        $input.off('keypress');
+                        $input.unbind('keypress');
                         $input.keypress(getNewFormIdFromEnterKey);
                         return false;
                     }
-                    submitFormData('add-new-form-data', {"form_id": form_id, "html": html, "mobile_html": mobile_html});
+                    submitFormData('add-new-form-data', {
+                        "form_id": form_id,
+                        "html": html,
+                        "mobile_html": mobile_html
+                    });
                 },
                 error: function(XMLHttpRequest, textStatus, error){
                     console.error(error);
@@ -435,7 +472,7 @@
             }
         }
 
-        $('#add-new-form-submit').click(getNewFormId);
+        $('#add-new-form-submit').bind('click', getNewFormId);
         $('#add-new-form-input').keypress(getNewFormIdFromEnterKey);
     });
 })(jQuery);
