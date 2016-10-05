@@ -2,15 +2,24 @@
     undefined;
     $(function(){
 
+        function bePressableButton(eneble) {
+            var visible = eneble ? 'hidden' : 'visible'; 
+            var disable = eneble ? false : true;
+
+            $('#' + formzu_ajax_obj.metabox_id).find('.spinner').css('visibility', visible);
+            $('#' + formzu_ajax_obj.submit_id).prop('disabled', disable);
+        }
+
+
         function submitNavFormSelect(e){
             e.preventDefault();
-            $('#' + formzu_ajax_obj.metabox_id).find('.spinner').css('visibility', 'visible');
-            $('#' + formzu_ajax_obj.submit_id).prop('disabled', true);
+            bePressableButton(false);
 
             var form_id = $('#' + formzu_ajax_obj.select_id).val();
 
             if (!form_id) {
                 alert("フォームID : " + form_id + "\n無効な値が入力されました。正確な値を入力してください。");
+                bePressableButton(true);
                 return false;
             }
 
@@ -25,8 +34,7 @@
                 },
                 success: function(response){
                     $('#menu-to-edit').append(response);
-                    $('#' + formzu_ajax_obj.metabox_id).find('.spinner').css('visibility', 'hidden');
-                    $('#' + formzu_ajax_obj.submit_id).prop('disabled', false);
+                    bePressableButton(true);
                 },
                 error: function(XMLHttpRequest, textStatus, error){
                     console.error(error);

@@ -24,8 +24,9 @@ function add_metabox_callback() {
     $html      = '<p><span>リンクさせるフォーム：</span><br>';
 
     $html .= sprintf(
-        '<select id="%s">',
-        $id
+        '<select id="%s" class="%s">',
+        $id,
+        'widefat edit-menu-item-target'
     );
     for ($i = 0, $l = count($form_data); $i < $l; $i++) {
 

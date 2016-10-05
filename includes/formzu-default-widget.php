@@ -110,7 +110,6 @@ class FormzuDefaultWidget extends WP_Widget
             </radiogroup>
         </p>
         <?php
-
     }
 
 

@@ -71,18 +71,40 @@ function set_navmenu_hidden_input() {
     $formzu_link_items = get_formzu_link_items();
     $formzu_link_items = add_new_formzu_link_item($formzu_link_items);
 
+    ?>
+    <!--
+    kansoku
+    <?php echo var_dump($formzu_link_items); ?>
+    -->
+    <?php
+
     if (empty($formzu_link_items)) {
         return false;
     }
+
+    global $wp_version;
+
+    if (version_compare(phpversion(), '5.3.0', '>=')) {
+        $formzu_link_items = json_encode($formzu_link_items, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    }
+    else {
+        $formzu_link_items = json_encode($formzu_link_items);
+    }
+
+    ?>
+    <script>
+    alert('set_navmenu_hidden_input');
+    </script>
+    <?php
 
     ?>
     <script>
         (function($){
             $(document).ready(function(){
-                var formzu_link_items= <?php echo json_encode($formzu_link_items, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+
+                var formzu_link_items = <?php echo $formzu_link_items ?>;
 
                 if (!formzu_link_items || !formzu_link_items instanceof Array) {
-                    alert('return false');
                     return false;
                 }
 
@@ -106,7 +128,7 @@ function set_navmenu_hidden_input() {
                     $hidden_url = $('<input>').attr({
                         'type' : 'hidden',
                         'id'   : 'edit-menu-item-url-' + item_id,
-                        'class': 'widefat code edit-menu-item-url',
+                        //'class': 'widefat code edit-menu-item-url',
                         'name' : 'menu-item-url[' + item_id + ']',
                         'value': form_url
                     });
@@ -121,6 +143,12 @@ function set_navmenu_hidden_input() {
 
 function get_formzu_link_items() {
     $locations = get_nav_menu_locations();
+
+    if ( ! $locations || empty($locations) ) {
+        return  array();
+    }
+
+    $formzu_link_items = array();
 
     foreach ($locations as $location => $term_id) {
 

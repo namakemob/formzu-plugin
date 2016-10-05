@@ -29,7 +29,7 @@
     }
 }
 
-section.formzu-fixed-widget {
+.formzu-fixed-widget {
     position: fixed;
     width: auto;
     right: 0;

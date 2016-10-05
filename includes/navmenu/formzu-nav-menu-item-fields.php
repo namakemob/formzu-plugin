@@ -61,18 +61,26 @@ class FormzuNavMenuItemFields
 
     static function _save_post($post_id)
     {
+
         if (get_post_type($post_id) !== 'nav_menu_item') {
             return;
         }
-
         if ( ! isset($_POST['menu-item-url'][$post_id]) ) {
             return;
         }
 
+        ?>
+        <!--
+        <?php echo var_dump($post_id); ?>
+        -->
+        <!--
+        <?php echo var_dump($_POST); ?>
+        -->
+        <?php
+
         $url = $_POST['menu-item-url'][$post_id];
 
         if ( isset($_POST['menu-item-object'][$post_id]) && $_POST['menu-item-object'][$post_id] == 'post_type_formzu_link' ) {
-
             $url = stripslashes($url);
             $url = sanitize_text_field($url);
             $url = esc_url($url);
@@ -80,6 +88,11 @@ class FormzuNavMenuItemFields
             update_post_meta($post_id, '_menu_item_url',    $url);
             update_post_meta($post_id, '_menu_item_type',   'formzu_link');
             update_post_meta($post_id, '_menu_item_object', 'post_type_formzu_link');           
+            ?>
+            <script>
+            alert('_save_post');
+            </script>
+            <?php
         }
     }
 }
