@@ -30,5 +30,6 @@ function formzu_enqueue_js() {
             'version' => $wp_version,
         )
     );
+
 }
 
