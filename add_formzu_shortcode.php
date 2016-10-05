@@ -20,7 +20,15 @@ function add_formzu_shortcode( $atts ) {
 
     $thickbox_on   = FALSE;
     $new_window_on = FALSE;
-    $is_mobile     = wp_is_mobile();
+
+    global $wp_version;
+
+    if (version_compare($wp_version, '3.4', '>=')) {
+        $is_mobile = wp_is_mobile();
+    }
+    else {
+        $is_mobile = FALSE;
+    }
 
     if ( $atts['tagname'] == 'a' && ! $is_mobile ) {
         if ( $atts['thickbox'] == 'on' || strpos($atts['class'], 'thickbox') !== false ) {

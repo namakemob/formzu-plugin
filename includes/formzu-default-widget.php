@@ -169,7 +169,16 @@ class FormzuDefaultWidget extends WP_Widget
     {
         $position = $par['form_position'];
 
-        if ($position == 'normal' || wp_is_mobile()) {
+        global $wp_version;
+
+        if (version_compare($wp_version, '3.4', '>=')) {
+            $is_mobile = wp_is_mobile();
+        }
+        else {
+            $is_mobile = false;
+        }
+
+        if ($position == 'normal' || $is_mobile) {
             return $args['before_widget'];
         }
 

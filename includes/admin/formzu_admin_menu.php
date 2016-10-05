@@ -13,7 +13,7 @@ function formzu_admin_menu() {
 
     global $wp_version;
 
-    if ($wp_version  >= 3.8) {
+    if (version_compare($wp_version, '3.8', '>=')) {
         $icon = 'dashicons-email-alt';
     }
     else {
