@@ -26,7 +26,6 @@ function formzu_admin_menu() {
         'manage_options',
         $slag_list['formzu'],
         'echo_formzu_admin_page',
-        //'dashicons-email-alt',
         $icon,
         '30'
     );

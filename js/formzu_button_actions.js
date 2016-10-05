@@ -63,8 +63,8 @@
                 }
             }
 
-            var $wpcontent = $('#wpcontent');
-            var $wpcontent_width = $wpcontent.width();
+            var $wpcontent             = $('#wpcontent');
+            var $wpcontent_width       = $wpcontent.width();
             var $wpcontent_margin_left = formzu_ajax_obj.version < 3.8 ? $wpcontent.css('margin-left') : '0';
 
             var $container = $('<div id="formzu-iframe-container">').css({
