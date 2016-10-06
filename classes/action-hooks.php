@@ -74,9 +74,6 @@ class FormzuActionHooks
     {
         FormzuFileLoader::load_files_for_client();
 
-        //add_action( 'wp_footer',        'formzu_resize_thickbox' );
-        //add_action( 'wp_footer',        'trim_formzu_fixed_widget_layer' );
-        //add_action( 'wp_head',            'add_formzu_plugin_css' );
         add_action( 'wp_enqueue_scripts', 'formzu_client_enqueue_js' );
         add_action( 'widgets_init',       'create_formzu_widget' );
         add_action( 'widgets_init',       'echo_formzu_html_widgets' );
