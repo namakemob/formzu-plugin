@@ -4,7 +4,7 @@ if ( ! defined('FORMZU_PLUGIN_PATH') ) {
     die();
 }
 
-function formzu_client_enqueue_js() {
+function formzu_client_enqueue_script() {
     wp_enqueue_script('thickbox');
     wp_enqueue_style('thickbox');
 
@@ -31,20 +31,5 @@ function formzu_client_enqueue_js() {
         filemtime( FORMZU_PLUGIN_PATH . '/js/formzu_resize_thickbox.js' ),
         true
     );
-
-    //global $wp_version;
-
-    //wp_localize_script(
-    //    'formzu_button_actions',
-    //    'formzu_ajax_obj',
-    //    array(
-    //        'ajaxurl' => admin_url('admin-ajax.php'),
-    //        'nonce'   => wp_create_nonce('get_iframe_height'),
-    //        'action'  => 'get_iframe_height',
-    //        'email'   => get_option('admin_email'),
-    //        'version' => $wp_version,
-    //    )
-    //);
-
 }
 

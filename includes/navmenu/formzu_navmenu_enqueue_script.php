@@ -4,7 +4,7 @@ if ( ! defined('FORMZU_PLUGIN_PATH') ) {
     die();
 }
 
-function formzu_navmenu_enqueue_js() {
+function formzu_navmenu_enqueue_script() {
     wp_enqueue_script(
         'formzu_navmenu_submit_button',
         plugins_url() . '/formzu-wp/js/formzu_navmenu_submit_button.js',
