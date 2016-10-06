@@ -115,7 +115,7 @@ function echo_add_formzu_form_body() {
         <div class="panel-content">
             <div><form id="dummy-form"></form></div>
             <!-- フォームが消されてしまうので、↑にダミーを設置 -->
-            <!-- postbox-wrap-formにここのformが内包されてしまっているせいで消されてしまう。別の箇所にhiddenで設置する -->
+            <!-- postbox-wrap-formにadd-new-form-data formが内包されてしまっているせいで消されてしまう。別の箇所にhiddenで設置するべき？-->
 
             <form id="add-new-form-data" method="post" action="" style="margin: 0">
                 <?php wp_nonce_field( 'formzu-new-form-save', 'add-new-form' ); ?>
