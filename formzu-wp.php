@@ -14,6 +14,8 @@ if ( ! defined('ABSPATH') ) {
     exit;
 }
 
+//test
+
 define( 'FORMZU_PLUGIN_PATH',        untrailingslashit(dirname(__FILE__)) );
 define( 'FORMZU_PLUGIN_JS_PATH',     FORMZU_PLUGIN_PATH . '/js' );
 define( 'FORMZU_PLUGIN_BASENAME',    plugin_basename(__FILE__ ) );
