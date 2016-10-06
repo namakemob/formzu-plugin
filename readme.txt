@@ -1,10 +1,10 @@
 === Formzu WP ===
-Contributors: hirokioyamada
+Contributors: h_oyamada
 Donate link: 
-Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, フォーム, フォームズ
-Requires at least: 4.6
+Tags: フォーム, form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, formzu, フォームズ
+Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,7 +57,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
--
+= v1.1.0 =
+* WordPress3.7へ対応
+* PHP5.2.17へ対応
 
 
 == Upgrade notice ==
