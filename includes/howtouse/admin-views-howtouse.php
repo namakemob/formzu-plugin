@@ -48,6 +48,7 @@ function echo_how_to_use_formzu() {
 
                                     <div class="contextual-help-sidebar">
                                         <p><strong>フォームズのページ</strong></p>
+                                        <div class="formzu-help-link" href="http://www.formzu.com/" target="_blank">トップページ</div>
                                         <div class="formzu-help-link" href="http://www.formzu.com/faq.php" target="_blank">よくある質問</div>
                                         <div class="formzu-help-link" href="http://www.formzu.com/setup_form.php" target="_blank">設置方法</div>
                                         <div class="formzu-help-link" href="https://ws.formzu.net/whatsnew.php" target="_blank">新着情報</div>
