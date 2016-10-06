@@ -27,7 +27,7 @@ function set_formzu_html_widgets() {
         );
         $widget_html = FormzuOptionHandler::get_option( $widget_id );
 
-        if ( $widget_html && is_array($widget_html) ) {
+        if ($widget_html && is_array($widget_html)) {
             $params['html'] = $widget_html;
         }
         else {
@@ -54,69 +54,79 @@ function set_formzu_html_widgets() {
         wp_register_sidebar_widget(
             $widget_id,
             $widget_name,
-            function($args, $params) {
-                $html = $params['html'];
-                $echo_params = array(
-                    'before_widget',
-                    'widget_html',
-                    'before_title',
-                    'title_html',
-                    'after_title',
-                    'content_html',
-                    'after_widget',
-                );
-
-                foreach ($echo_params as $param) {
-                    if ( strpos($html[$param], 'script') || strpos($html[$param], 'iframe') ) {
-                        echo echo_html(do_shortcode($html[$param]));
-                    }
-                    else {
-                        echo do_shortcode($html[$param]);
-                    }
-                }
-            },
+            'display_formzu_widget_html',
             $args,
             $params
         );
 
+        //$callback_func = create_function('$widget_id', 'return setup_formzu_widget_control($widget_id);');
+
         wp_register_widget_control(
             $widget_id,
             $widget_name,
-            function() use ($widget_id) {
-                if (isset($_POST['submitted'])) {
-                    $widget_html = array(
-                        'before_widget' => str_replace('\\', '', $_POST['before_widget']),
-                        'widget_html'   => str_replace('\\', '', $_POST['widget_html']),
-                        'before_title'  => str_replace('\\', '', $_POST['before_title']),
-                        'title_html'    => str_replace('\\', '', $_POST['title_html']),
-                        'after_title'   => str_replace('\\', '', $_POST['after_title']),
-                        'content_html'  => str_replace('\\', '', $_POST['content_html']),
-                        'after_widget'  => str_replace('\\', '', $_POST['after_widget']),
-                    );
-                    FormzuOptionHandler::update_option( $widget_id, $widget_html );
-                }
-                else {
-                    $widget_html = FormzuOptionHandler::get_option( $widget_id );
-                }
-
-                $input_str = '<input style="font-size:12px;" type="text" name="%1$s" value="%2$s" class="large-text code" />';
-                echo '<p>';
-                echo sprintf($input_str, 'before_widget', esc_attr($widget_html['before_widget']));
-                echo sprintf($input_str, 'widget_html',   esc_attr($widget_html['widget_html']));
-                echo sprintf($input_str, 'before_title',  esc_attr($widget_html['before_title']));
-                echo sprintf($input_str, 'title_html',    esc_attr($widget_html['title_html']));
-                echo sprintf($input_str, 'after_title',   esc_attr($widget_html['after_title']));
-                echo sprintf($input_str, 'content_html',  esc_attr($widget_html['content_html']));
-                echo sprintf($input_str, 'after_widget',  esc_attr($widget_html['after_widget']));
-                echo '</p>';
-
-                echo '<p>';
-                echo '<a href="' . wp_nonce_url(admin_url('widgets.php') . '?action=delete_formzu_widget&widget_id=' . $widget_id, 'delete_formzu_widget-' . $widget_id, 'delete_widget_nonce') . '">' . __('このウィジェットを完全に消去', 'formzu-admin') . '</a>';
-                echo '</p>';
-                echo '<input type="hidden" name="submitted" value="1" />';
-            },
+            //call_user_func('setup_formzu_widget_control', $widget_id),
+            //$callback_func,
+            create_function('', 'return setup_formzu_widget_control(\'' . strval($widget_id) . '\');'),
             $params
         );
     }
+}
+
+
+function display_formzu_widget_html($args, $params) {
+    $html = $params['html'];
+    $echo_params = array(
+        'before_widget',
+        'widget_html',
+        'before_title',
+        'title_html',
+        'after_title',
+        'content_html',
+        'after_widget',
+    );
+
+    foreach ($echo_params as $param) {
+        if (strpos($html[$param], 'script') || strpos($html[$param], 'iframe')) {
+            echo echo_html(do_shortcode($html[$param]));
+        }
+        else {
+            echo do_shortcode($html[$param]);
+        }
+    }
+}
+
+
+function setup_formzu_widget_control($widget_id) {
+    if (isset($_POST['submitted'])) {
+        $widget_html = array(
+            'before_widget' => str_replace('\\', '', $_POST['before_widget']),
+            'widget_html'   => str_replace('\\', '', $_POST['widget_html']),
+            'before_title'  => str_replace('\\', '', $_POST['before_title']),
+            'title_html'    => str_replace('\\', '', $_POST['title_html']),
+            'after_title'   => str_replace('\\', '', $_POST['after_title']),
+            'content_html'  => str_replace('\\', '', $_POST['content_html']),
+            'after_widget'  => str_replace('\\', '', $_POST['after_widget']),
+        );
+        FormzuOptionHandler::update_option( $widget_id, $widget_html );
+    }
+    else {
+        $widget_html = FormzuOptionHandler::get_option( $widget_id );
+    }
+
+    $input_str = '<input style="font-size:12px;" type="text" name="%1$s" value="%2$s" class="large-text code" />';
+    echo '<p>';
+    echo sprintf($input_str, 'before_widget', esc_attr($widget_html['before_widget']));
+    echo sprintf($input_str, 'widget_html',   esc_attr($widget_html['widget_html']));
+    echo sprintf($input_str, 'before_title',  esc_attr($widget_html['before_title']));
+    echo sprintf($input_str, 'title_html',    esc_attr($widget_html['title_html']));
+    echo sprintf($input_str, 'after_title',   esc_attr($widget_html['after_title']));
+    echo sprintf($input_str, 'content_html',  esc_attr($widget_html['content_html']));
+    echo sprintf($input_str, 'after_widget',  esc_attr($widget_html['after_widget']));
+    echo '</p>';
+
+    echo '<p>';
+    echo '<a href="' . wp_nonce_url(admin_url('widgets.php') . '?action=delete_formzu_widget&widget_id=' . $widget_id, 'delete_formzu_widget-' . $widget_id, 'delete_widget_nonce') . '">' . __('このウィジェットを完全に消去', 'formzu-admin') . '</a>';
+    echo '</p>';
+    echo '<input type="hidden" name="submitted" value="1" />';
 }
 

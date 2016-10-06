@@ -4,7 +4,7 @@ if ( ! defined('FORMZU_PLUGIN_PATH') ) {
     die();
 }
 
-function formzu_client_enqueue_js() {
+function formzu_client_enqueue_script() {
     wp_enqueue_script('thickbox');
     wp_enqueue_style('thickbox');
 

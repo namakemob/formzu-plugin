@@ -38,12 +38,18 @@ function show_created_formzu_widget() {
         }
 
         var title_elements = $('.widget-title');
+        var $elem;
 
         for (var i = 0, l = title_elements.length; i < l; i++) {
             if ($(title_elements[i]).text() == widget_name) {
-                var $elem = $(title_elements[i]);
+                $elem = $(title_elements[i]);
             }
         }
+
+        if (!$elem) {
+            return false;
+        }
+
         $elem.addClass('my-updated');
 
         var text = $elem.text();
