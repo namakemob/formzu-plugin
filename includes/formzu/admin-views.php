@@ -11,7 +11,7 @@ function echo_formzu_admin_page() {
     ?>
         <div class="wrap">
             <h2>フォーム管理（フォームズ）</h2>
-            <i class="fa fa-sign-in"></i><a href="http://www.formzu.com" target="_blank">フォームズトップページ</a>
+            <i class="fa fa-external-link-square"></i><a href="http://www.formzu.com" target="_blank">フォームズトップページ</a>
 
 
             <div id="poststuff" class="metabox-holder">
@@ -23,7 +23,7 @@ function echo_formzu_admin_page() {
 
                         <?php add_meta_box('formzu-create-box', '<span class="box-icon">1<i class="fa fa-external-link" aria-hidden="true"></i></span><span class="box-label">' . __(' フォームズへ移動して新しくフォームを作成します（別ページ）', 'formzu-admin') . '</span>', 'echo_create_formzu_form_body', $page); ?>
                         <?php add_meta_box('formzu-add-box',    '<span class="box-icon">2<i class="fa fa-plus" aria-hidden="true"></i></span><span class="box-label">' . __(' フォームズで作成したフォームIDを入力してください', 'formzu-admin') . '</span>', 'echo_add_formzu_form_body', $page); ?>
-                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span><span class="box-label">' . __(' フォーム一覧', 'formzu-admin') . '</span>', 'echo_formzu_list_body', $page); ?>
+                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span><span class="box-label">' . __(' フォーム一覧（WordPressに登録したフォーム）', 'formzu-admin') . '</span>', 'echo_formzu_list_body', $page); ?>
 
                         <?php do_meta_boxes($page, 'advanced', null); ?>
                 </div>
@@ -100,8 +100,12 @@ function echo_create_formzu_form_body() {
     <div class="panel">
         <div class="panel-content">
 
+            <div id="goto-formzu-page-button" class="large-button" style="margin: 0 0 20px 0;">フォームズを表示する（ページは移動しません）</div>
+            <div id="open-formzu-page-button" class="large-button">別タブでフォームズを表示する</div>
+            <!--
             <div id="open-formzu-page-button" class="large-button" style="margin: 0 0 20px 0;">別タブでフォームズを表示する</div>
             <div id="goto-formzu-page-button" class="large-button">同じ画面でフォームズを表示する</div>
+            -->
 
         </div>
     </div>
@@ -119,11 +123,11 @@ function echo_add_formzu_form_body() {
 
             <form id="add-new-form-data" method="post" action="" style="margin: 0">
                 <?php wp_nonce_field( 'formzu-new-form-save', 'add-new-form' ); ?>
-                <label>
-                    <span style="font-size: 1.8em; margin: 0 8px 0 0;">フォームID</span>
-                    <input type="text" id="add-new-form-input" name="form_id_URL" placeholder="例）S12345678">
+                <label style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="min-width: 121px; font-size: 1.8em; margin: 0 8px 0 0;">フォームID</span>
+                    <input style="" type="text" id="add-new-form-input" name="form_id_URL" placeholder="例）S12345678">
+                    <span style="min-width: 73px; padding:13px 12px 11px;" id="add-new-form-submit" class="large-button">設定する</span>
                 </label>
-                <span id="add-new-form-submit" class="large-button" style="padding:13px 12px 11px;">設定する</span>
                 <div style="display: inline-block; width: 100%;">
                     <span style="margin: 0 0 0 132px;">※フォームURLも入力できます。</span>
                 </div>

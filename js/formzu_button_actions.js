@@ -30,12 +30,12 @@
         var email = formzu_ajax_obj.email;
 
         $('#open-formzu-page-button').bind('click', function(){
-            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
+            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wp-plugin';
             window.open(url);
         });
 
         $('#goto-formzu-page-button').bind('click', function(){
-            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
+            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wp-plugin';
             openFormzuIframeWindow(url);
         });
 
