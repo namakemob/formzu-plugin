@@ -113,10 +113,26 @@ div.separate-box {
     text-align: center;
 }
 
+#add-new-form-data {
+    margin: 0;
+}
+
+#add-new-form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#add-new-form-label {
+    min-width: 121px;
+    font-size: 1.8em;
+    margin: 0 8px 0 0;
+}
+
 #add-new-form-input {
     font-size: 1.6em;
     border: 3px solid #999;
-    width: 70%;
+    width: 100%;
     padding: 8px 8px;
     border-radius: 6px;
 }
@@ -135,6 +151,20 @@ div.separate-box {
     color: #bbb;
 }
 
+#add-new-form-submit {
+    min-width: 73px;
+    padding: 13px 12px 11px;
+}
+
+
+#goto-formzu-page-button {
+    margin: 0 0 20px 0;
+}
+#open-formzu-page-button {
+    font-size: 14px;
+    padding: 4px 12px;
+    display: block;
+}
 .large-button {
     background-color: #aaa;
     color: #fff;

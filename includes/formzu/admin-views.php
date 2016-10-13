@@ -100,7 +100,7 @@ function echo_create_formzu_form_body() {
     <div class="panel">
         <div class="panel-content">
 
-            <div id="goto-formzu-page-button" class="large-button" style="margin: 0 0 20px 0;">フォームズを表示する（ページは移動しません）</div>
+            <div id="goto-formzu-page-button" class="large-button">フォームズを表示する</div>
             <div id="open-formzu-page-button" class="large-button">別タブでフォームズを表示する</div>
             <!--
             <div id="open-formzu-page-button" class="large-button" style="margin: 0 0 20px 0;">別タブでフォームズを表示する</div>
@@ -121,13 +121,13 @@ function echo_add_formzu_form_body() {
             <!-- フォームが消されてしまうので、↑にダミーを設置 -->
             <!-- postbox-wrap-formにadd-new-form-data formが内包されてしまっているせいで消されてしまう。別の箇所にhiddenで設置するべき？-->
 
-            <form id="add-new-form-data" method="post" action="" style="margin: 0">
+            <form id="add-new-form-data" method="post" action="">
                 <?php wp_nonce_field( 'formzu-new-form-save', 'add-new-form' ); ?>
-                <label style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="min-width: 121px; font-size: 1.8em; margin: 0 8px 0 0;">フォームID</span>
-                    <input style="" type="text" id="add-new-form-input" name="form_id_URL" placeholder="例）S12345678">
-                    <span style="min-width: 73px; padding:13px 12px 11px;" id="add-new-form-submit" class="large-button">設定する</span>
-                </label>
+                <div id="add-new-form-container">
+                    <label for="add-new-form-input" id="add-new-form-label">フォームID</label>
+                    <input type="text" id="add-new-form-input" name="form_id_URL" placeholder="例）S12345678">
+                    <span id="add-new-form-submit" class="large-button">設定する</span>
+                </div>
                 <div style="display: inline-block; width: 100%;">
                     <span style="margin: 0 0 0 132px;">※フォームURLも入力できます。</span>
                 </div>
