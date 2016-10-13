@@ -140,7 +140,7 @@ function echo_how_to_create_formzu_form() {
     <div class="postbox">
         <div class="inside">
             <p>まずは<strong>「フォーム管理」</strong>画面にある<strong>「1 フォームズへ移動して新しくフォームを作成します（別ページ）」</strong>ボタンをクリックします。</p>
-            <p>すると<strong>「フォームズを表示する（ページは移動しません）」</strong>ボタンと<strong>「別タブでフォームズを表示する」</strong>ボタンが表示されます。</p>
+            <p>すると<strong>「フォームズを表示する」</strong>ボタンと<strong>「別タブでフォームズを表示する」</strong>ボタンが表示されます。</p>
             <p>どちらのボタンも、クリックすることでフォームズのウェブサイトを表示できます。</p>
             <p>ボタンをクリックしてフォームズのウェブサイトを表示させてください。</p>
         </div>
