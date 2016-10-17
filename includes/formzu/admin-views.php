@@ -11,8 +11,9 @@ function echo_formzu_admin_page() {
     ?>
         <div class="wrap">
             <h2>フォーム管理（フォームズ）</h2>
-            <i class="fa fa-external-link-square"></i><a href="http://www.formzu.com" target="_blank">フォームズトップページ</a>
-
+            <i class="fa fa-external-link-square"></i><a style="margin-right: 12px;" href="http://www.formzu.com" target="_blank">フォームズトップページ</a>
+            <i class="fa fa-frown-o"></i><a style="margin-right: 12px;" href="#" onClick="javascript:window.open('http://ws.formzu.net/dist/S95904411/', 'mailform1', 'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollber=yes, width=600, height=550, top=50, left=50')">改善要望</a>
+            <i class="fa fa-exclamation-triangle"></i><a style="margin-right: 12px;" href="#" onClick="javascript:window.open('http://ws.formzu.net/dist/S97257136/', 'mailform1', 'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollber=yes, width=600, height=550, top=50, left=50')">不具合報告</a>
 
             <div id="poststuff" class="metabox-holder">
                 <div class="postbox-conteiner formzu-container">
