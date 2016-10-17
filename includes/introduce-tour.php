@@ -260,7 +260,7 @@ class Formzu_Plugin_Tour
 
                 formzu_pointer_options = $.extend(formzu_pointer_options, {
                     buttons: function(event, t){
-                        button = $('<a id="pointer-close" style="margin-left: 5px" class="button-secondary">' + '<?php echo __('閉じる', 'formzu-admin'); ?>' + '</a>');
+                        button = $('<a id="pointer-close" style="margin-left: 5px" class="button-secondary">' + '<?php echo __('これ以降の説明を表示しない', 'formzu-admin'); ?>' + '</a>');
                         button.bind('click.pointer', function(){
                             t.element.pointer('close');
                         });

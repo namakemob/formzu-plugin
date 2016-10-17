@@ -1,10 +1,10 @@
 === Formzu WP ===
-Contributors: hirokioyamada
+Contributors: h_oyamada
 Donate link: 
-Tags: form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, フォーム, フォームズ
-Requires at least: 4.6
+Tags: フォーム, form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, formzu, フォームズ
+Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 1.0.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,15 +18,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 このプラグインをインストールすることで、フォームズのフォームをWordPress管理画面上から簡単に設置できます。
 
-
-= 詳しい使い方 =
-プラグインをインストールした後、管理画面の左側メインメニューバー内「フォームズ」項目直下の「使い方」をご覧ください。
-
 = 機能 =
 * フォームを埋め込んだ固定ページ作成機能
 * フォームへのナビゲーションメニュー作成機能
 * フォームへのリンク付きウィジェット作成機能
 * 詳細設定が可能なショートコード生成機能
+
+= 詳しい使い方 =
+プラグインをインストールした後、管理画面の左側メインメニューバー内「フォームズ」項目直下の「使い方」をご覧ください。
 
 **フォームズ** : http://www.formzu.com/
 
@@ -57,7 +56,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
--
+= v1.2.0 =
+* UI修正
+
+= v1.1.0 =
+* WordPress3.7へ対応
+* PHP5.2.17へ対応
 
 
 == Upgrade notice ==

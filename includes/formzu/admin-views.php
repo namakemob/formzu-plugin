@@ -11,8 +11,9 @@ function echo_formzu_admin_page() {
     ?>
         <div class="wrap">
             <h2>フォーム管理（フォームズ）</h2>
-            <i class="fa fa-sign-in"></i><a href="http://www.formzu.com" target="_blank">フォームズトップページ</a>
-
+            <i class="fa fa-external-link-square"></i><a style="margin-right: 12px;" href="http://www.formzu.com" target="_blank">フォームズトップページ</a>
+            <i class="fa fa-frown-o"></i><a style="margin-right: 12px;" href="#" onClick="javascript:window.open('http://ws.formzu.net/dist/S95904411/', 'mailform1', 'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollber=yes, width=600, height=550, top=50, left=50')">改善要望</a>
+            <i class="fa fa-exclamation-triangle"></i><a style="margin-right: 12px;" href="#" onClick="javascript:window.open('http://ws.formzu.net/dist/S97257136/', 'mailform1', 'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollber=yes, width=600, height=550, top=50, left=50')">不具合報告</a>
 
             <div id="poststuff" class="metabox-holder">
                 <div class="postbox-conteiner formzu-container">
@@ -23,7 +24,7 @@ function echo_formzu_admin_page() {
 
                         <?php add_meta_box('formzu-create-box', '<span class="box-icon">1<i class="fa fa-external-link" aria-hidden="true"></i></span><span class="box-label">' . __(' フォームズへ移動して新しくフォームを作成します（別ページ）', 'formzu-admin') . '</span>', 'echo_create_formzu_form_body', $page); ?>
                         <?php add_meta_box('formzu-add-box',    '<span class="box-icon">2<i class="fa fa-plus" aria-hidden="true"></i></span><span class="box-label">' . __(' フォームズで作成したフォームIDを入力してください', 'formzu-admin') . '</span>', 'echo_add_formzu_form_body', $page); ?>
-                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span><span class="box-label">' . __(' フォーム一覧', 'formzu-admin') . '</span>', 'echo_formzu_list_body', $page); ?>
+                        <?php add_meta_box('formzu-list-box',   '<span class="box-icon">3<i class="fa fa-list" aria-hidden="true"></i></span><span class="box-label">' . __(' フォーム一覧（WordPressに登録したフォーム）', 'formzu-admin') . '</span>', 'echo_formzu_list_body', $page); ?>
 
                         <?php do_meta_boxes($page, 'advanced', null); ?>
                 </div>
@@ -100,8 +101,12 @@ function echo_create_formzu_form_body() {
     <div class="panel">
         <div class="panel-content">
 
+            <div id="goto-formzu-page-button" class="large-button">フォームズを表示する</div>
+            <div id="open-formzu-page-button" class="large-button">別タブでフォームズを表示する</div>
+            <!--
             <div id="open-formzu-page-button" class="large-button" style="margin: 0 0 20px 0;">別タブでフォームズを表示する</div>
             <div id="goto-formzu-page-button" class="large-button">同じ画面でフォームズを表示する</div>
+            -->
 
         </div>
     </div>
@@ -115,15 +120,15 @@ function echo_add_formzu_form_body() {
         <div class="panel-content">
             <div><form id="dummy-form"></form></div>
             <!-- フォームが消されてしまうので、↑にダミーを設置 -->
-            <!-- postbox-wrap-formにここのformが内包されてしまっているせいで消されてしまう。別の箇所にhiddenで設置する -->
+            <!-- postbox-wrap-formにadd-new-form-data formが内包されてしまっているせいで消されてしまう。別の箇所にhiddenで設置するべき？-->
 
-            <form id="add-new-form-data" method="post" action="" style="margin: 0">
+            <form id="add-new-form-data" method="post" action="">
                 <?php wp_nonce_field( 'formzu-new-form-save', 'add-new-form' ); ?>
-                <label>
-                    <span style="font-size: 1.8em; margin: 0 8px 0 0;">フォームID</span>
+                <div id="add-new-form-container">
+                    <label for="add-new-form-input" id="add-new-form-label">フォームID</label>
                     <input type="text" id="add-new-form-input" name="form_id_URL" placeholder="例）S12345678">
-                </label>
-                <span id="add-new-form-submit" class="large-button" style="padding:13px 12px 11px;">設定する</span>
+                    <span id="add-new-form-submit" class="large-button">設定する</span>
+                </div>
                 <div style="display: inline-block; width: 100%;">
                     <span style="margin: 0 0 0 132px;">※フォームURLも入力できます。</span>
                 </div>

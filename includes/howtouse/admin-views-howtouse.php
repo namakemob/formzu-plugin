@@ -48,6 +48,7 @@ function echo_how_to_use_formzu() {
 
                                     <div class="contextual-help-sidebar">
                                         <p><strong>フォームズのページ</strong></p>
+                                        <div class="formzu-help-link" href="http://www.formzu.com/" target="_blank">トップページ</div>
                                         <div class="formzu-help-link" href="http://www.formzu.com/faq.php" target="_blank">よくある質問</div>
                                         <div class="formzu-help-link" href="http://www.formzu.com/setup_form.php" target="_blank">設置方法</div>
                                         <div class="formzu-help-link" href="https://ws.formzu.net/whatsnew.php" target="_blank">新着情報</div>
@@ -139,7 +140,7 @@ function echo_how_to_create_formzu_form() {
     <div class="postbox">
         <div class="inside">
             <p>まずは<strong>「フォーム管理」</strong>画面にある<strong>「1 フォームズへ移動して新しくフォームを作成します（別ページ）」</strong>ボタンをクリックします。</p>
-            <p>すると<strong>「別タブでフォームズを表示する」</strong>ボタンと<strong>「同じ画面でフォームズを表示する」</strong>ボタンが表示されます。</p>
+            <p>すると<strong>「フォームズを表示する」</strong>ボタンと<strong>「別タブでフォームズを表示する」</strong>ボタンが表示されます。</p>
             <p>どちらのボタンも、クリックすることでフォームズのウェブサイトを表示できます。</p>
             <p>ボタンをクリックしてフォームズのウェブサイトを表示させてください。</p>
         </div>
@@ -204,7 +205,7 @@ function echo_how_to_create_formzu_form() {
             <p><strong>「2 フォームズで作成したフォームIDを入力してください」</strong>ボタンをクリックしてください。</p>
             <p>フォームIDの入力欄が表示されるので、フォーム作成通知メールからコピーした<strong>「フォームID」</strong>を貼り付けてください。</p>
             <p>フォームIDの入力が完了したら入力欄の右にある<strong>「設定する」</strong>ボタンをクリックしてください。</p>
-            <p><strong>「3 フォーム一覧」</strong>をクリックしてください。展開されたリスト内に、作成したフォームが登録されていれば成功です。</p>
+            <p><strong>「3 フォーム一覧（WordPressに登録したフォーム）」</strong>をクリックしてください。展開されたリスト内に、作成したフォームが登録されていれば成功です。</p>
         </div>
     </div>
 
@@ -220,7 +221,7 @@ function echo_how_to_create_formzu_form() {
     <div class="postbox">
         <div class="inside">
             <p>フォームズのフォームの編集ページにて、フォーム項目を変更した際には<strong>「更新」</strong>を行ってください。</p>
-            <p>（当プラグインのフォーム一覧リストから「編集」をクリックして編集すると、更新する手間が省けます。）</p>
+            <p>（当プラグインのフォーム一覧から「編集」をクリックして編集すると、更新する手間が省けます。）</p>
             <p>更新は、フォーム一覧に表示されている各フォームごとに行います。</p>
             <p>フォーム一覧にて、各フォームにマウスカーソルを乗せると「編集」「更新」「削除」と表示されます。ここで「更新」が行えます。</p>
             <p>更新することでWordPress側のフォームに関するデータを変更できます。</p>
@@ -240,7 +241,7 @@ function echo_how_to_create_formzu_page() {
         <div class="inside">
             <p>WordPressへのフォーム登録を行っていない方は、まず<strong>「フォーム作成の詳しい説明」</strong>をご覧ください。</p>
             <p>WordPress管理画面の左側メインメニュー「フォームズ」または「フォーム管理」をクリックしてください。</p>
-            <p><strong>「3 フォーム一覧」</strong>をクリックして登録フォームのリストを展開してください。</p>
+            <p><strong>「3 フォーム一覧（WordPressに登録したフォーム）」</strong>をクリックして登録フォームのリストを展開してください。</p>
             <p>固定ページとして設置したいフォームの行と同じ行にある<strong>「固定ページ作成」</strong>ボタンをクリックしてください。</p>
             <p>固定ページの編集画面へ移動したら、フォームを設置する固定ページのタイトルを設定してください。初期値はフォームのタイトルになっています。</p>
             <p><strong>「プレビューボタン」</strong>をクリックして、フォームが正しく設置されているかどうか確認してください。</p>
@@ -282,7 +283,7 @@ function echo_how_to_create_formzu_menu() {
     </div>
     <div class="postbox">
         <div class="inside">
-            <p>まだ固定ページを作成していない方は、現在ご覧になっている「使い方」画面の<strong>「固定ページ」</strong>項目をお試しください。</p>
+            <p>まだ固定ページを作成していない方は、現在ご覧になっている「使い方」画面の<strong>「固定ページ」</strong>項目を先にご覧ください。</p>
             <p>WordPress管理画面の左側メインメニュー<strong>「外観」</strong>をクリックしてください。</p>
             <p>次に、WordPress管理画面の左側メインメニュー「外観」の下にある<strong>「メニュー」</strong>項目をクリックしてください。</p>
             <p>メニューの編集画面へ移動したら、編集画面内の左側にある<strong>「固定ページ」</strong>欄の中から、フォームを設置した固定ページを探してください。</p>
@@ -343,7 +344,7 @@ function echo_how_to_create_formzu_widget() {
     <div class="postbox">
         <div class="inside">
             <p>WordPress管理画面の左側メインメニュー「フォームズ」または「フォーム管理」をクリックしてください。</p>
-            <p><strong>「3 フォーム一覧」</strong>をクリックして登録フォームのリストを展開してください。</p>
+            <p><strong>「3 フォーム一覧（WordPressに登録したフォーム）」</strong>をクリックして登録フォームのリストを展開してください。</p>
             <p>ウィジェットを作成したいフォームの行と同じ行にある<strong>「ウィジェット作成」</strong>ボタンをクリックしてください。</p>
             <p>ウィジェット画面に移動したら、ウィジェットのタイトルに<strong>「NEW!」</strong>がついているウィジェットがあるのを確認してください。</p>
             <p>ウィジェットを設置したい場所へそのウィジェットを追加してください。</p>
@@ -365,7 +366,7 @@ function echo_how_to_create_formzu_shortcode() {
         <div class="inside">
             <p>WordPressへのフォーム登録を行っていない方は、まず<strong>「フォーム作成の詳しい説明」</strong>をご覧ください。</p>
             <p>WordPress管理画面の左側メインメニュー「フォームズ」または「フォーム管理」をクリックしてください。</p>
-            <p><strong>「3 フォーム一覧」</strong>をクリックして登録フォームのリストを展開してください。</p>
+            <p><strong>「3 フォーム一覧（WordPressに登録したフォーム）」</strong>をクリックして登録フォームのリストを展開してください。</p>
             <p>設置したいフォームの行と同じ行にある<strong>「ショートコード」項目（例：[formzu form_id="...）</strong>をクリックしてコピーしてください。</p>
             <p>WordPress管理画面の左側メインメニュー<strong>「固定ページ」</strong>項目をクリックしてください。</p>
             <p>固定ページ一覧の中からフォームを設置したいページを選ぶか、左側メインメニュー「固定ページ一覧」の下にある<strong>「新規追加」</strong>項目をクリックしてください。</p>
@@ -388,7 +389,7 @@ function echo_how_to_use_formzu_template() {
     <div class="postbox">
         <div class="inside">
             <p>WordPress管理画面の左側メインメニュー「フォームズ」または「フォーム管理」をクリックしてください。</p>
-            <p><strong>「3 フォーム一覧」</strong>をクリックして登録フォームのリストを展開してください。</p>
+            <p><strong>「3 フォーム一覧（WordPressに登録したフォーム）」</strong>をクリックして登録フォームのリストを展開してください。</p>
             <p>設置したいフォームの行と同じ行にある<strong>「ショートコード」項目（例：[formzu form_id="...）</strong>をクリックしてコピーしてください。</p>
             <p>WordPress管理画面の左側メインメニュー<strong>「外観」</strong>をクリックしてください。</p>
             <p>次に、WordPress管理画面の左側メインメニュー「外観」の下にある<strong>「テーマの編集」</strong>項目をクリックしてください。</p>

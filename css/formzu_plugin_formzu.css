@@ -6,7 +6,7 @@
 }
 .formzu-mail-icon > i.fa-exclamation-circle {
     position: absolute;
-    right: -5;
+    right: -7px;
     background-color: #f1f1f1;
 }
 .red-alert {
@@ -21,9 +21,10 @@
     margin-bottom: 50px;
 }
 
-#formzu-create-box > h2,
-#formzu-add-box > h2,
-#formzu-list-box > h2,
+
+#formzu-create-box > .hndle,
+#formzu-add-box > .hndle,
+#formzu-list-box > .hndle,
 .separate-box {
     color: #555;
     text-shadow: 1px 1px 1px #ccc;
@@ -44,17 +45,17 @@
     margin: 0 0 4px;
 }
 
-#formzu-create-box.closed h2,
-#formzu-add-box.closed h2,
-#formzu-list-box.closed h2 {
+#formzu-create-box.closed > .hndle,
+#formzu-add-box.closed > .hndle,
+#formzu-list-box.closed > .hndle {
     padding: 16px 16px;
     border-width: 4px 4px 4px;
     cursor: pointer;
 }
 
-#formzu-create-box h2 > span,
-#formzu-add-box h2 > span,
-#formzu-list-box h2 > span {
+#formzu-create-box .hndle > span,
+#formzu-add-box .hndle > span,
+#formzu-list-box .hndle > span {
     margin: 0 0 0 12px;
 }
 
@@ -78,7 +79,7 @@
 #formzu-list-box {
     background: inherit;
 }
-#formzu-list-box h2 {
+#formzu-list-box > .hndle {
     background: white;
 }
 
@@ -112,10 +113,26 @@ div.separate-box {
     text-align: center;
 }
 
+#add-new-form-data {
+    margin: 0;
+}
+
+#add-new-form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#add-new-form-label {
+    min-width: 121px;
+    font-size: 1.8em;
+    margin: 0 8px 0 0;
+}
+
 #add-new-form-input {
     font-size: 1.6em;
     border: 3px solid #999;
-    width: 70%;
+    width: 100%;
     padding: 8px 8px;
     border-radius: 6px;
 }
@@ -134,6 +151,20 @@ div.separate-box {
     color: #bbb;
 }
 
+#add-new-form-submit {
+    min-width: 73px;
+    padding: 13px 12px 11px;
+}
+
+
+#goto-formzu-page-button {
+    margin: 0 0 20px 0;
+}
+#open-formzu-page-button {
+    font-size: 14px;
+    padding: 4px 12px;
+    display: block;
+}
 .large-button {
     background-color: #aaa;
     color: #fff;

@@ -21,7 +21,7 @@
 
     $(function(){
 
-        $('.ui-sortable-handle').hover(function(){
+        $('#formzu-create-box > .hndle, #formzu-add-box > .hndle, #formzu-list-box > .hndle').hover(function(){
             $(this).find('.box-label').css('text-decoration', 'underline');
         }, function(){
             $(this).find('.box-label').css('text-decoration', 'none');
@@ -30,12 +30,12 @@
         var email = formzu_ajax_obj.email;
 
         $('#open-formzu-page-button').bind('click', function(){
-            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
+            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wp-plugin';
             window.open(url);
         });
 
         $('#goto-formzu-page-button').bind('click', function(){
-            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email;
+            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wp-plugin';
             openFormzuIframeWindow(url);
         });
 
@@ -82,9 +82,7 @@
                 }
             }
 
-            var $wpcontent             = $('#wpcontent');
-            var $wpcontent_width       = $wpcontent.width();
-            var $wpcontent_margin_left = formzu_ajax_obj.version < 3.8 ? $wpcontent.css('margin-left') : '0';
+            var $wpcontent_width = $('#wpcontent').width();
 
             var $container = $('<div id="formzu-iframe-container">').css({
                 'background-color': 'white',
@@ -93,7 +91,6 @@
                 'position'        : 'absolute',
                 'top'             : '0',
                 'left'            : window_width,
-                'margin-left'     : $wpcontent_margin_left,
                 'border'          : 'solid 1px #777'
             });
             $container.attr('data-url', url);
@@ -357,8 +354,6 @@
                     if (!$.parseHTML || typeof $.parseHTML !== 'function') {
                         var html =        parseHTML(response[0]);
                         var mobile_html = parseHTML(response[1]);
-                        console.log(html);
-                        return false;
                     } else {
                         var html        = $.parseHTML(response[0]);
                         var mobile_html = $.parseHTML(response[1]);
@@ -431,8 +426,6 @@
                     if (!$.parseHTML || typeof $.parseHTML !== 'function') {
                         var html =        parseHTML(response[0]);
                         var mobile_html = parseHTML(response[1]);
-                        //console.log(html);
-                        //return false;
                     } else {
                         var html        = $.parseHTML(response[0]);
                         var mobile_html = $.parseHTML(response[1]);

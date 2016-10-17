@@ -29,7 +29,7 @@ function formzu_admin_notices() {
 ?>
 
     <?php if ( $messages = get_transient( 'formzu-admin-errors' ) ) : ?>
-    <div class = "notice my-error is-dismissible">
+    <div class = "updated notice my-error is-dismissible">
         <ul>
             <?php foreach( $messages as $message ): ?>
                 <li><?php echo esc_html($message); ?></li>
@@ -39,7 +39,7 @@ function formzu_admin_notices() {
     <?php endif; ?>
 
     <?php if ( $message = get_transient( 'formzu-admin-updated' ) ) : ?>
-    <div class = "notice my-updated is-dismissible">
+    <div class = "updated notice my-updated is-dismissible">
         <ul>
             <?php if ( strpos($message, 'script') || strpos($message, 'iframe') ) : ?>
                 <li><?php echo esc_html($message); ?></li>
@@ -51,7 +51,7 @@ function formzu_admin_notices() {
     <?php endif; ?>
 
     <?php if ( $message = get_transient( 'formzu-admin-html' ) ) : ?>
-    <div class = "notice my-updated is-dismissible">
+    <div class = "updated notice my-updated is-dismissible">
         <ul>
             <?php if ( strpos($message, 'script') || strpos($message, 'iframe') ) : ?>
                 <li><?php echo esc_html($message); ?></li>
@@ -63,7 +63,7 @@ function formzu_admin_notices() {
     <?php endif; ?>
 
     <?php if ( $message = get_transient( 'formzu-admin-error' ) ) : ?>
-    <div class = "notice my-error is-dismissible">
+    <div class = "updated notice my-error is-dismissible">
         <ul>
             <?php if ( strpos($message, 'script') || strpos($message, 'iframe') ) : ?>
                 <li><?php echo esc_html($message); ?></li>
