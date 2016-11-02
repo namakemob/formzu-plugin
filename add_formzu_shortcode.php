@@ -112,10 +112,10 @@ function set_link_to_formzu($atts, $height, $opts, $format) {
 
     if ( $opts['thickbox_on'] ) {
         $link .= '?TB_iframe=true&width=' . $atts['width'] . '&height=' . $height;
-        $link .= '&wp-plugin';
+        $link .= '&wppug=1';
     }
     else if ( ! $opts['new_window_on'] ) {
-        $link .= '?wp-plugin';
+        $link .= '?wppug=1';
     }
 
 
@@ -183,7 +183,7 @@ function formzu_set_additional_atts($tagname, $form_id, $height, $opts, $format)
     }
     if ( ! $opts['is_mobile'] && $opts['new_window_on'] ) {
         $additional_atts .= ' onClick="javascript:window.open(\''
-             . 'https://ws.formzu.net/fgen/' . $form_id . '?wp-plugin\', '
+             . 'https://ws.formzu.net/fgen/' . $form_id . '?wppug=1\', '
              . '\'mailform1\', \'toolbar=no, location=no, status=yes, menubar=yes, resizable=yes, scrollbars=yes, '
              . 'width=600, height=' . $height . ', top=100, left=100\')"';
     }
