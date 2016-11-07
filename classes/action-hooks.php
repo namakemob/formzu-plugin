@@ -147,6 +147,9 @@ class FormzuActionHooks
 
     public static function add_deactivation_actions()
     {
+        if ( ! get_class(Formzu_Plugin_Tour) ) {
+            require_once FORMZU_PLUGIN_PATH . '/includes/introduce-tour.php';
+        }
         Formzu_Plugin_Tour::reset_closing_tour();
 
         delete_option('widget_formzu_default_widget');
