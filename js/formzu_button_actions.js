@@ -30,12 +30,12 @@
         var email = formzu_ajax_obj.email;
 
         $('#open-formzu-page-button').bind('click', function(){
-            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wppug=1';
+            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wp-plugin';
             window.open(url);
         });
 
         $('#goto-formzu-page-button').bind('click', function(){
-            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wppug=1';
+            var url = 'https://ws.formzu.net/new_form.php?dmail=' + email + '&wp-plugin';
             openFormzuIframeWindow(url);
         });
 
@@ -358,9 +358,11 @@
                         var html        = $.parseHTML(response[0]);
                         var mobile_html = $.parseHTML(response[1]);
                     }
-
+                    if (response[3]) {
+                        console.log(response[3]);
+                    }
                     if (!html || !mobile_html) {
-                        alert("フォームID : " + form_id + "\nフォームが見つかりませんでした。");
+                        alert('サーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
                         $('.fa-refresh').parent().remove();
                         $('.formzu-reload-button').bind('click', getReloadFormId);
                         return false;
@@ -372,9 +374,11 @@
                     });
                 },
                 error: function(XMLHttpRequest, textStatus, error){
-                    console.error(error);
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
+                    alert('\nサーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                    $('.fa-refresh').parent().remove();
+                    $('.formzu-reload-button').bind('click', getReloadFormId);
                 }
             });
             return false;
@@ -430,16 +434,12 @@
                         var html        = $.parseHTML(response[0]);
                         var mobile_html = $.parseHTML(response[1]);
                     }
-
+                    if (response[3]) {
+                        console.log(response[3]);
+                    }
                     if (!html || !mobile_html) {
-                        alert('フォームID : ' + form_id + '\nフォームが見つかりませんでした。');
-                        $('.fa-refresh').parent().remove();
-                        $('#add-new-form-submit').bind('click', getNewFormId);
-
-                        var $input = $('#add-new-form-input');
-
-                        $input.unbind('keypress');
-                        $input.keypress(getNewFormIdFromEnterKey);
+                        alert('サーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                        missNewFormId(); 
                         return false;
                     }
                     submitFormData('add-new-form-data', {
@@ -449,12 +449,24 @@
                     });
                 },
                 error: function(XMLHttpRequest, textStatus, error){
-                    console.error(error);
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
+                    alert('サーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                    missNewFormId(); 
                 }
             });
             return false;
+        }
+
+
+        function missNewFormId(){
+            $('.fa-refresh').parent().remove();
+            $('#add-new-form-submit').bind('click', getNewFormId);
+
+            var $input = $('#add-new-form-input');
+
+            $input.unbind('keypress');
+            $input.keypress(getNewFormIdFromEnterKey);
         }
 
 
