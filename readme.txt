@@ -4,7 +4,7 @@ Donate link:
 Tags: フォーム, form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, formzu, フォームズ
 Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Changelog ==
+= v1.3.0 =
+* サーバ側セキュリティ設定allow_url_fopenでの不具合に対する修正
+
 = v1.2.0 =
 * UI修正
 

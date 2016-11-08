@@ -3,7 +3,7 @@
 Plugin Name: Formzu WP
 Plugin URI: https://wordpress.org/plugins/formzu-wp/
 Description: Formzu WP 
-Version: 1.2.0
+Version: 1.3.0
 Author: h_oyamada
 Author URI: http://www.formzu.com/
 License: GPLv2 or later

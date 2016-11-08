@@ -362,7 +362,7 @@
                         console.log(response[3]);
                     }
                     if (!html || !mobile_html) {
-                        alert('サーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                        alert('サーバ内でのWebページ取得に失敗しました。\n詳しくは「使い方」メニューの「エラーについて」項目をご覧ください');
                         $('.fa-refresh').parent().remove();
                         $('.formzu-reload-button').bind('click', getReloadFormId);
                         return false;
@@ -376,7 +376,7 @@
                 error: function(XMLHttpRequest, textStatus, error){
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
-                    alert('\nサーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                    alert('サーバ内でのWebページ取得に失敗しました。\n詳しくは「使い方」メニューの「エラーについて」項目をご覧ください');
                     $('.fa-refresh').parent().remove();
                     $('.formzu-reload-button').bind('click', getReloadFormId);
                 }
@@ -438,7 +438,7 @@
                         console.log(response[3]);
                     }
                     if (!html || !mobile_html) {
-                        alert('サーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                        alert('サーバ内でのWebページ取得に失敗しました。\n詳しくは「使い方」メニューの「エラーについて」項目をご覧ください');
                         missNewFormId(); 
                         return false;
                     }
@@ -451,7 +451,7 @@
                 error: function(XMLHttpRequest, textStatus, error){
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
-                    alert('サーバ内でのWebページ取得に失敗しました。\nPHPの設定：allow_url_fopenがoffになっている可能性があります。');
+                    alert('サーバ内でのWebページ取得に失敗しました。\n詳しくは「使い方」メニューの「エラーについて」項目をご覧ください');
                     missNewFormId(); 
                 }
             });

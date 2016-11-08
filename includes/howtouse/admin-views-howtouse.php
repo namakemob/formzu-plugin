@@ -44,6 +44,9 @@ function echo_how_to_use_formzu() {
                                         <li class="tabs">
                                             <a href="#help-tab7" area-controls="help-tab7">設定</a>
                                         </li>
+                                        <li class="tabs">
+                                            <a href="#help-tab8" area-controls="help-tab8">エラーについて</a>
+                                        </li>
                                     </ul>
 
                                     <div class="contextual-help-sidebar">
@@ -116,6 +119,14 @@ function echo_how_to_use_formzu() {
                                         </div>
                                         <?php echo_about_formzu_option(); ?>
                                     </div>
+
+                                    <div id="help-tab8" class="metabox-holder tabs-panel help-tab-content">
+                                        <div class="inside inside-left">
+                                            <h1>エラーについて</h1>
+                                        </div>
+                                        <?php echo_about_formzu_error(); ?>
+                                    </div>
+
                                 </div>
 
 
@@ -510,6 +521,27 @@ function echo_about_formzu_option() {
             </tr>
         </tbody>
     </table>
+<?php
+}
+
+
+function echo_about_formzu_error() {
+?>
+    <div class="inside inside-left">
+        <p>[サーバ内でのWebページ取得に失敗しました。]</p>
+    </div>
+    <div class="postbox">
+        <div class="inside">
+            <p>プラグインはフォームを追加する前に、サーバ内でWebページ（フォームがあるページ）を取得し、フォームの詳細情報を読み取ります。</p>
+            <p>このエラーは、サーバ内でWebページが取得できなかったことにより、フォームの詳細情報が読み取れず、処理が中断された状態を表しています。</p>
+            <p>以下のような原因が考えられます。</p>
+            <ul>
+                <li><span>PHPの設定 : 設定ファイル（php.ini）のallow_url_fopenがoffになっている可能性があります。レンタルサーバーなどでセキュリティ対策として有効化されている場合があります。</span></li>
+                <li><span>フォームIDの誤入力 : フォームIDは大文字のs「S」と5桁以上の数字で構成されています。または、フォームのURLをそのまま入力することもできます。</span></li>
+            </ul>
+            <a href="http://www.formzu.com/setup_form.php" target="_blank">プラグイン以外にフォーム設置する方法</a>
+        </div>
+    </div>
 <?php
 }
 
