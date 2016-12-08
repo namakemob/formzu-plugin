@@ -1,9 +1,9 @@
 === Formzu WP ===
 Contributors: h_oyamada
 Donate link: 
-Tags: フォーム, form, contact form, custom form, forms, embed, links, navigation, widget, shortcode, formzu, フォームズ
+Tags: フォーム, メールフォーム, formzu, form, contact form, フォームズ
 Requires at least: 3.7
-Tested up to: 4.6.1
+Tested up to: 4.7.0
 Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
